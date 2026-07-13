@@ -1,0 +1,183 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "leaflet/dist/leaflet.css";
+
+@layer base {
+  :root {
+    --background: #F8FAFC;
+    --foreground: #0F172A;
+    
+    --card: #FFFFFF;
+    --card-foreground: #0F172A;
+    
+    --popover: #FFFFFF;
+    --popover-foreground: #0F172A;
+    
+    --primary: #047857; /* Deep emerald green */
+    --primary-foreground: #FFFFFF;
+    
+    --secondary: #E2E8F0;
+    --secondary-foreground: #475569;
+    
+    --muted: #F1F5F9;
+    --muted-foreground: #64748B;
+    
+    --accent: #10B981; /* Bright emerald */
+    --accent-foreground: #FFFFFF;
+    
+    --destructive: #EF4444;
+    --destructive-foreground: #FFFFFF;
+    
+    --border: #E2E8F0;
+    --input: #E2E8F0;
+    --ring: #10B981;
+
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+    --glow-cyan: #059669;
+
+    --radius: 1rem;
+
+    --font-display: "Inter", sans-serif;
+    --font-sans: "Inter", sans-serif;
+    --font-small: "Inter", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+@keyframes god-tier-bg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float-glow {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(5%, 5%) scale(1.1); }
+  100% { transform: translate(-5%, -5%) scale(0.95); }
+}
+
+  html {
+    font-size: 14px; /* Reduced to 14px for a tighter, denser UI as requested */
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .netscope-card {
+    @apply bg-white border border-slate-200 rounded-2xl p-6 transition-all shadow-sm;
+  }
+  .netscope-card:hover {
+    @apply border-emerald-200 shadow-md transform -translate-y-1;
+  }
+  
+  .glass-card {
+    @apply bg-white border border-slate-200 rounded-2xl p-6 shadow-sm transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    @apply border-emerald-300 shadow-lg transform -translate-y-1;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold transition-all duration-300 active:scale-95 hover:opacity-90 shadow-md;
+  }
+}
+
+@layer utilities {
+  .hero-title {
+    font-size: clamp(48px, 8vw, 84px);
+    font-weight: 900;
+    letter-spacing: -3px;
+    background: linear-gradient(90deg, #0F172A, #334155);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent;
+  }
+
+  .text-safe { color: #10B981; }
+  .text-warning { color: #F59E0B; }
+  .text-danger { color: #EF4444; }
+
+  .text-high {
+    font-size: 14px;
+  }
+  .text-small {
+    font-size: 12px;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-slate-200;
+  }
+}
+
+.grid-bg {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+  position: relative;
+}
+
+.grid-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(248, 250, 252, 0.5) 0%, #F8FAFC 70%);
+  pointer-events: none;
+}
+
+.ambient-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.05) 0%, #F8FAFC 70%);
+}
+
+/* Animations for premium feel */
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Leaflet Overrides */
+.leaflet-container {
+  background: #060816 !important;
+  border-radius: 24px;
+}
+.leaflet-tile {
+  filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3);
+}
+.leaflet-control-attribution {
+  background: rgba(6, 8, 22, 0.7) !important;
+  color: #A0AEC0 !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(6, 8, 22, 0.7) !important;
+  color: #A0AEC0 !important;
+}
