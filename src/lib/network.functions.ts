@@ -252,6 +252,12 @@ export const serverIpInfo = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     try {
       let targetIp = data.ip;
+
+      // If no target IP is provided, use the request's client IP
+      if (!targetIp) {
+        targetIp = getRequestIP({ xForwardedFor: true });
+      }
+
       if (targetIp && !isIp(targetIp)) {
         try {
           // Clean domain if it's a URL
@@ -267,6 +273,7 @@ export const serverIpInfo = createServerFn({ method: "POST" })
           throw new Error("Could not resolve domain to IP");
         }
       }
+      
       const info = await fetchIpInfo(targetIp);
       return info;
     } catch (e: any) {
