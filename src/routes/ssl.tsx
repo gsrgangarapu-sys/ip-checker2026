@@ -60,12 +60,12 @@ function SslPage() {
         title="SSL Certificate Checker — Verify TLS/SSL Security" 
         description="Check your SSL/TLS certificate installation. Verify certificate validity, issuer details, expiration dates, and protocol versions in real-time." 
         keywords="ssl checker, check ssl certificate, tls checker, ssl test, verify ssl, certificate validity check, ssl expiration checker, check https security"
-        url="https://ip-guardian.com/ssl"
+        url="https://dnschecker.space/ssl"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "SSL Certificate Checker",
-          "url": "https://ip-guardian.com/ssl",
+          "url": "https://dnschecker.space/ssl",
           "description": "Verify TLS/SSL certificate validity, issuers, and protocols.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All"

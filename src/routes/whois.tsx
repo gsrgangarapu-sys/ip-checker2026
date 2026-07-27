@@ -76,12 +76,12 @@ function WhoisPage() {
         title="WHOIS Lookup Tool — Domain & IP Registration Info" 
         description="Free RDAP-powered WHOIS lookup tool. Find domain registration dates, registrar details, ownership contacts, and nameservers for any domain or IP address." 
         keywords="whois lookup, domain lookup, whois IP, check domain ownership, domain registration details, find domain owner, whois search, rdap protocol, domain name search, ip address owner"
-        url="https://ip-guardian.com/whois"
+        url="https://dnschecker.space/whois"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "WHOIS Lookup Tool",
-          "url": "https://ip-guardian.com/whois",
+          "url": "https://dnschecker.space/whois",
           "description": "Find domain and IP registration details instantly.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All"

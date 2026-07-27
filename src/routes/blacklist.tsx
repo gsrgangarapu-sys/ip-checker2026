@@ -60,12 +60,12 @@ function BlacklistPage() {
         title="IP Blacklist Checker — Test IP & Domain Reputation" 
         description="Check if your IP or domain is listed on global anti-spam blacklists (DNSBL). Test IP reputation and detect malware risks instantly." 
         keywords="ip blacklist checker, domain blacklist, check ip reputation, dnsbl check, spamhaus check, is my ip blacklisted, email blacklist, website malware scanner"
-        url="https://ip-guardian.com/blacklist"
+        url="https://dnschecker.space/blacklist"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "IP Blacklist Checker",
-          "url": "https://ip-guardian.com/blacklist",
+          "url": "https://dnschecker.space/blacklist",
           "description": "Check if an IP or domain is listed on anti-spam blacklists.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All"

@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Activity, Menu, X } from "lucide-react";
+import { Globe, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -32,10 +32,10 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link to="/" className="group flex items-center gap-3">
           <div className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-400 shadow-sm">
-            <Activity className="h-5 w-5 text-white" strokeWidth={3} />
+            <Globe className="h-5 w-5 text-white" strokeWidth={3} />
           </div>
           <span className="text-xl font-bold tracking-tight text-foreground group-hover:text-emerald-600 transition-colors">
-            netscope
+            DNSChecker
           </span>
         </Link>
 

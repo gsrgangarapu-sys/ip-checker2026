@@ -40,12 +40,12 @@ function MyIpPage() {
         title="What Is My IP Address? — Public IP, Location & Browser | IP Guardian" 
         description="Instantly see your public IPv4/IPv6, exact geolocation, ISP, ASN, and browser fingerprint. Check your IP address details securely and accurately." 
         keywords="what is my ip, my ip address, check ip, public ip address, find my ip, ip location, ip geolocation, show my ip, my isp, ipv4, ipv6"
-        url="https://ip-guardian.com/my-ip"
+        url="https://dnschecker.space/my-ip"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "What Is My IP Address",
-          "url": "https://ip-guardian.com/my-ip",
+          "url": "https://dnschecker.space/my-ip",
           "description": "Find your current public IP address and connection details.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All"

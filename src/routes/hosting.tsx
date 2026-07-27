@@ -51,12 +51,12 @@ function HostingPage() {
         title="Hosting Checker — Detect Website Hosting Provider" 
         description="Discover the hosting provider, datacenter location, ASN, and organizational infrastructure behind any IP or website. Detect ISP and web hosts." 
         keywords="hosting checker, who hosts this website, find hosting provider, detect web host, website hosting lookup, isp lookup, asn lookup, datacenter location"
-        url="https://ip-guardian.com/hosting"
+        url="https://dnschecker.space/hosting"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "Hosting Provider Detector",
-          "url": "https://ip-guardian.com/hosting",
+          "url": "https://dnschecker.space/hosting",
           "description": "Detect the hosting provider for any website or IP address.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All"

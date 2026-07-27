@@ -20,18 +20,18 @@ import { useRef } from "react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "NetScope — Premium Network Intelligence & Security Toolkit" },
-      { name: "description", content: "Inspect any website, domain or IP. A focused toolkit for developers, sysadmins, and security professionals who debug the internet." },
-      { name: "keywords", content: "network tools, ip lookup, dns lookup, whois, ssl checker, security scan, blacklist check, email checker, port scanner, geolocation, cybersecurity, developer tools" },
-      { name: "author", content: "NetScope Team" },
+      { title: "DNSChecker — Premium Network Intelligence & Security Toolkit" },
+      { name: "description", content: "Advanced IP, DNS, SSL, and network analysis tools. Get actionable intelligence for security, routing, and domain investigations instantly." },
+      { name: "keywords", content: "ip checker, dns lookup, whois, ssl check, port scanner, network intelligence, security tools" },
+      { name: "author", content: "DNSChecker Team" },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "NetScope — Network Intelligence" },
-      { property: "og:description", content: "A focused toolkit for everyone who debugs the internet for a living." },
+      { property: "og:title", content: "DNSChecker — Network Intelligence" },
+      { property: "og:description", content: "Advanced IP, DNS, SSL, and network analysis tools." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://netscope.app/" },
+      { property: "og:url", content: "https://dnschecker.space/" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "NetScope — Network Intelligence" },
-      { name: "twitter:description", content: "Inspect any website, domain or IP in a single keystroke." },
+      { name: "twitter:title", content: "DNSChecker — Network Intelligence" },
+      { name: "twitter:description", content: "Advanced IP, DNS, SSL, and network analysis tools." },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
@@ -60,12 +60,12 @@ function HomePage() {
         title="IP-Guardian — Premium Network Intelligence & Security Toolkit" 
         description="Inspect any website, domain or IP. A focused toolkit for developers, sysadmins, and security professionals. IP lookup, DNS, WHOIS, SSL, and more." 
         keywords="network tools, ip lookup, dns lookup, whois, ssl checker, security scan, blacklist check, email checker, port scanner, geolocation, cybersecurity, developer tools, ip-guardian"
-        url="https://ip-guardian.com"
+        url="https://dnschecker.space"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "IP-Guardian Network Toolkit",
-          "url": "https://ip-guardian.com",
+          "url": "https://dnschecker.space",
           "description": "Inspect any website, domain or IP with a single keystroke.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All"

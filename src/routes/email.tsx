@@ -60,12 +60,12 @@ function EmailPage() {
         title="Email Security Checker — Verify MX, SPF & DMARC" 
         description="Verify your domain's email infrastructure. Check mail exchange (MX) availability, sender policy framework (SPF), and DMARC configuration." 
         keywords="email security check, mx record check, check spf record, check dmarc record, email deliverability test, domain email setup, mail server test"
-        url="https://ip-guardian.com/email"
+        url="https://dnschecker.space/email"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "Email Security Checker",
-          "url": "https://ip-guardian.com/email",
+          "url": "https://dnschecker.space/email",
           "description": "Verify MX, TXT, and DMARC records for domain email security.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All"

@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 export const Route = createFileRoute("/tools")({
   head: () => ({
     meta: [
-      { title: "Network Tools — WHOIS, DNS, Ports, SSL | NetScope" },
+      { title: "Network Tools — WHOIS, DNS, Ports, SSL | DNSChecker" },
       { name: "description", content: "Ten production-grade lookups in one console — IP, DNS, WHOIS, SSL, security headers, blacklist, email, ports & geolocation." },
     ],
     links: [{ rel: "canonical", href: "/tools" }],
@@ -36,15 +36,15 @@ function ToolsPage() {
   return (
     <div className="min-h-screen flex flex-col selection:bg-[#00E5FF]/30 relative bg-muted">
       <Seo 
-        title="All Network Tools — WHOIS, DNS, Ports, SSL | IP Guardian" 
+        title="All Network Tools — WHOIS, DNS, Ports, SSL | DNSChecker" 
         description="Explore all available network intelligence and security tools. IP lookup, DNS resolver, Domain WHOIS, SSL checker, Port Scanner, and more."
         keywords="network tools directory, all ip tools, free network tools, dns tools, web security tools, domain tools list, online network utilities"
-        url="https://ip-guardian.com/tools"
+        url="https://dnschecker.space/tools"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "Network Tools Directory",
-          "url": "https://ip-guardian.com/tools",
+          "url": "https://dnschecker.space/tools",
           "description": "Explore all available network intelligence and security tools.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All"

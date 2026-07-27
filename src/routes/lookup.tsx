@@ -53,12 +53,12 @@ function LookupPage() {
         title="IP Lookup & Network Resolver — Advanced Intelligence" 
         description="Advanced IP address lookup and intelligence. Resolve any IPv4 or IPv6 address to its geographic location, autonomous system, and network provider." 
         keywords="ip lookup, network resolver, ipv4 lookup, ipv6 lookup, asn lookup, isp lookup, ip intelligence, ip details, ip lookup tool"
-        url="https://ip-guardian.com/lookup"
+        url="https://dnschecker.space/lookup"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "IP Lookup Resolver",
-          "url": "https://ip-guardian.com/lookup",
+          "url": "https://dnschecker.space/lookup",
           "description": "Advanced IP address lookup and intelligence information.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All"

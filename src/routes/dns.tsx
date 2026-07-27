@@ -75,12 +75,12 @@ function DnsPage() {
         title="DNS Lookup & Resolver — Check A, MX, NS, TXT Records" 
         description="Free global DNS lookup tool. Query DNS records over HTTPS via Cloudflare. Supports A, AAAA, MX, NS, TXT, SOA, CNAME, CAA and PTR (reverse DNS)." 
         keywords="dns lookup, dns records, check dns, find dns records, txt record lookup, mx record lookup, reverse dns, ns lookup, ip-guardian dns tool"
-        url="https://ip-guardian.com/dns"
+        url="https://dnschecker.space/dns"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "DNS Lookup Tool",
-          "url": "https://ip-guardian.com/dns",
+          "url": "https://dnschecker.space/dns",
           "description": "Perform a comprehensive DNS lookup for any domain.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All"

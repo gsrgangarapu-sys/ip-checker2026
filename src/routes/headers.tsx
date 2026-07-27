@@ -57,12 +57,12 @@ function HeadersPage() {
         title="HTTP Headers Inspector — See Your Request Headers | IP Guardian" 
         description="Inspect every HTTP header your browser sends to a server. Check User-Agent, Accept, language preferences, forwarded IP, and security indicators." 
         keywords="http headers inspector, view request headers, check http headers, my user agent, inspect headers, http request viewer, browser headers"
-        url="https://ip-guardian.com/headers"
+        url="https://dnschecker.space/headers"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "HTTP Headers Inspector",
-          "url": "https://ip-guardian.com/headers",
+          "url": "https://dnschecker.space/headers",
           "description": "Inspect HTTP headers sent by your browser.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All"

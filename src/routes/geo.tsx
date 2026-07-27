@@ -51,12 +51,12 @@ function GeoPage() {
         title="IP Geolocation & Tracker — Map Any IP Address" 
         description="Track and map the exact geographical location of any IP or domain. Discover country, region, city, and GPS coordinates instantly." 
         keywords="ip geolocation, ip tracker, map ip address, locate ip, find ip location, track ip address, domain location, ip to country, ip to city"
-        url="https://ip-guardian.com/geo"
+        url="https://dnschecker.space/geo"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "IP Geolocation Tracker",
-          "url": "https://ip-guardian.com/geo",
+          "url": "https://dnschecker.space/geo",
           "description": "Track and map the geographical location of any IP or domain.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All"

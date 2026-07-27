@@ -12,7 +12,7 @@ export function Seo({
   title = "IP-Guardian | Advanced Network Intelligence", 
   description = "Advanced IP lookup, network intelligence, DNS tools, and security tracking platform.", 
   keywords = "IP lookup, network tools, DNS checker, SSL checker, blacklist checker, security tracking",
-  url = "https://ip-guardian.com",
+  url = "https://dnschecker.space",
   schema
 }: SeoProps) {
   const fullTitle = title.includes("IP-Guardian") ? title : `${title} | IP-Guardian`;
