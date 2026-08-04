@@ -5,15 +5,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { IpDashboard } from "@/components/IpDashboard";
+import { SeoLookupContent } from "@/components/SeoLookupContent";
 import { Search, Globe, Shield, Terminal, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/lookup")({
   head: () => ({
     meta: [
-      { title: "IP Lookup — Geolocation, ASN & ISP | IP Guardian" },
-      { name: "description", content: "Look up any IPv4 or IPv6 address. Get geolocation, ASN, ISP, hostname and threat intelligence in real time." },
-      { property: "og:title", content: "IP Lookup — IP Guardian" },
-      { property: "og:description", content: "Real-time IP intelligence for any address." },
+      { title: "IP Address Lookup - Trace, Track & Locate an IP Instantly" },
+      { name: "description", content: "Lookup details about any IP address including location, ISP, hostname, proxy, and blacklist status. Instantly track the IP's city, country, latitude, and longitude." },
+      { property: "og:title", content: "IP Address Lookup - Trace & Locate" },
+      { property: "og:description", content: "Instantly track the IP's city, country, latitude, and longitude data." },
       { property: "og:url", content: "/lookup" },
     ],
     links: [{ rel: "canonical", href: "/lookup" }],
@@ -50,9 +51,9 @@ function LookupPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Seo 
-        title="IP Lookup & Network Resolver — Advanced Intelligence" 
-        description="Advanced IP address lookup and intelligence. Resolve any IPv4 or IPv6 address to its geographic location, autonomous system, and network provider." 
-        keywords="ip lookup, network resolver, ipv4 lookup, ipv6 lookup, asn lookup, isp lookup, ip intelligence, ip details, ip lookup tool"
+        title="IP Address Lookup - Trace, Track & Locate an IP Instantly" 
+        description="Lookup details about any IP address including location, ISP, hostname, proxy, and blacklist status. Instantly track the IP's city, country, latitude, and longitude." 
+        keywords="ip address lookup, trace ip, track ip, locate ip, check ip location, ip geolocation tracker, ip location finder, free ip lookup"
         url="https://dnschecker.space/lookup"
         schema={{
           "@context": "https://schema.org",
@@ -158,6 +159,8 @@ function LookupPage() {
             <IpDashboard initialIp={target} />
           </motion.div>
         </AnimatePresence>
+        
+        <SeoLookupContent />
       </section>
 
       <SiteFooter />

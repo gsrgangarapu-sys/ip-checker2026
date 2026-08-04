@@ -3,6 +3,7 @@ import { Seo } from "@/components/Seo";
 import { motion } from "framer-motion";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { SeoHomeContent } from "@/components/SeoHomeContent";
 import { 
   Globe, 
   Network, 
@@ -20,18 +21,18 @@ import { useRef } from "react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "DNSChecker — Premium Network Intelligence & Security Toolkit" },
-      { name: "description", content: "Advanced IP, DNS, SSL, and network analysis tools. Get actionable intelligence for security, routing, and domain investigations instantly." },
-      { name: "keywords", content: "ip checker, dns lookup, whois, ssl check, port scanner, network intelligence, security tools" },
+      { title: "IP Checker & IP Address Lookup - Check Your Public IP Location" },
+      { name: "description", content: "Instantly check your IP address details. Our free IP lookup tool provides accurate geolocation, ISP, proxy detection, blacklist status, and network tracking." },
+      { name: "keywords", content: "ip checker, ip address lookup, what is my ip, ip location, check public ip, ip tracker, reverse ip, blacklist checker, network intelligence" },
       { name: "author", content: "DNSChecker Team" },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "DNSChecker — Network Intelligence" },
-      { property: "og:description", content: "Advanced IP, DNS, SSL, and network analysis tools." },
+      { property: "og:title", content: "IP Checker & IP Address Lookup" },
+      { property: "og:description", content: "Instantly check your IP address details with accurate geolocation, proxy, and blacklist tracking." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://dnschecker.space/" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "DNSChecker — Network Intelligence" },
-      { name: "twitter:description", content: "Advanced IP, DNS, SSL, and network analysis tools." },
+      { name: "twitter:title", content: "IP Checker & IP Address Lookup" },
+      { name: "twitter:description", content: "Instantly check your IP address details with accurate geolocation, proxy, and blacklist tracking." },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
@@ -57,9 +58,9 @@ function HomePage() {
   return (
     <div ref={containerRef} className="min-h-screen flex flex-col selection:bg-emerald-500/30 relative">
       <Seo 
-        title="IP-Guardian — Premium Network Intelligence & Security Toolkit" 
-        description="Inspect any website, domain or IP. A focused toolkit for developers, sysadmins, and security professionals. IP lookup, DNS, WHOIS, SSL, and more." 
-        keywords="network tools, ip lookup, dns lookup, whois, ssl checker, security scan, blacklist check, email checker, port scanner, geolocation, cybersecurity, developer tools, ip-guardian"
+        title="IP Checker & IP Address Lookup - Check Your Public IP Location" 
+        description="Instantly check your IP address details. Our free IP lookup tool provides accurate geolocation, ISP, proxy detection, blacklist status, and network tracking." 
+        keywords="ip checker, ip address lookup, what is my ip, ip location, check public ip, ip tracker, reverse ip, blacklist checker, network intelligence"
         url="https://dnschecker.space"
         schema={{
           "@context": "https://schema.org",
@@ -167,6 +168,10 @@ function HomePage() {
             ))}
           </div>
         </div>
+      </section>
+
+      <section className="bg-muted pb-20 px-4 sm:px-6">
+        <SeoHomeContent />
       </section>
 
       <SiteFooter />

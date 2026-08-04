@@ -4,16 +4,17 @@ import { useState } from "react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { IpDashboard } from "@/components/IpDashboard";
+import { SeoMyIpContent } from "@/components/SeoMyIpContent";
 import { motion } from "framer-motion";
 import { ShieldCheck, Info } from "lucide-react";
 
 export const Route = createFileRoute("/my-ip")({
   head: () => ({
     meta: [
-      { title: "What Is My IP — Public IP, Location & Browser | IP Guardian" },
-      { name: "description", content: "Instantly see your public IPv4/IPv6, geolocation, ISP, ASN and browser fingerprint." },
-      { property: "og:title", content: "What Is My IP — IP Guardian" },
-      { property: "og:description", content: "Your public IP and full network fingerprint, in real time." },
+      { title: "What Is My IP Address? - Check Your IP & Location" },
+      { name: "description", content: "Find out what your public IP address and location is. Instantly check your network details, geolocation, ISP, and browser fingerprint with our free IP tracker." },
+      { property: "og:title", content: "What Is My IP Address? - Check Your IP & Location" },
+      { property: "og:description", content: "Find out what your public IP address and location is. Instantly check your network details." },
       { property: "og:url", content: "/my-ip" },
     ],
     links: [{ rel: "canonical", href: "/my-ip" }],
@@ -37,9 +38,9 @@ function MyIpPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Seo 
-        title="What Is My IP Address? — Public IP, Location & Browser | IP Guardian" 
-        description="Instantly see your public IPv4/IPv6, exact geolocation, ISP, ASN, and browser fingerprint. Check your IP address details securely and accurately." 
-        keywords="what is my ip, my ip address, check ip, public ip address, find my ip, ip location, ip geolocation, show my ip, my isp, ipv4, ipv6"
+        title="What Is My IP Address? - Check Your IP & Location" 
+        description="Find out what your public IP address and location is. Instantly check your network details, geolocation, ISP, and browser fingerprint with our free IP tracker." 
+        keywords="what is my ip address, check ip, public ip address, find my ip location, ip tracker, show my ip, my isp, free ip scanner"
         url="https://dnschecker.space/my-ip"
         schema={{
           "@context": "https://schema.org",
@@ -117,6 +118,8 @@ function MyIpPage() {
             </p>
           </div>
         </div>
+
+        <SeoMyIpContent />
       </section>
 
       <SiteFooter />
