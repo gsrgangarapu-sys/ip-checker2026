@@ -57,9 +57,9 @@ function SslPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Seo 
-        title="SSL Certificate Checker — Verify TLS/SSL Security" 
-        description="Check your SSL/TLS certificate installation. Verify certificate validity, issuer details, expiration dates, and protocol versions in real-time." 
-        keywords="ssl checker, check ssl certificate, tls checker, ssl test, verify ssl, certificate validity check, ssl expiration checker, check https security"
+        title="SSL Checker - Check SSL Certificate & Verify Installation" 
+        description="Use our fast SSL Checker to quickly diagnose problems with your SSL certificate installation. Verify certificate validity, issuer details, and expiration dates." 
+        keywords="ssl checker, check ssl certificate, ssl decoder, free ssl checker, ssl certificate checker, ssl validation, check https security, ssl server test"
         url="https://dnschecker.space/ssl"
         schema={{
           "@context": "https://schema.org",
