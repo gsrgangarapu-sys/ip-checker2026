@@ -13,6 +13,7 @@ import { Route as WhoisRouteImport } from './routes/whois'
 import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as SslRouteImport } from './routes/ssl'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SitemapRouteImport } from './routes/sitemap'
 import { Route as PortsRouteImport } from './routes/ports'
 import { Route as MyIpRouteImport } from './routes/my-ip'
 import { Route as LookupRouteImport } from './routes/lookup'
@@ -21,6 +22,7 @@ import { Route as HeadersRouteImport } from './routes/headers'
 import { Route as GeoRouteImport } from './routes/geo'
 import { Route as EmailRouteImport } from './routes/email'
 import { Route as DnsRouteImport } from './routes/dns'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as BlacklistRouteImport } from './routes/blacklist'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -42,6 +44,11 @@ const SslRoute = SslRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapRoute = SitemapRouteImport.update({
+  id: '/sitemap',
+  path: '/sitemap',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PortsRoute = PortsRouteImport.update({
@@ -84,6 +91,11 @@ const DnsRoute = DnsRouteImport.update({
   path: '/dns',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlacklistRoute = BlacklistRouteImport.update({
   id: '/blacklist',
   path: '/blacklist',
@@ -98,6 +110,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/blacklist': typeof BlacklistRoute
+  '/blog': typeof BlogRoute
   '/dns': typeof DnsRoute
   '/email': typeof EmailRoute
   '/geo': typeof GeoRoute
@@ -106,6 +119,7 @@ export interface FileRoutesByFullPath {
   '/lookup': typeof LookupRoute
   '/my-ip': typeof MyIpRoute
   '/ports': typeof PortsRoute
+  '/sitemap': typeof SitemapRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ssl': typeof SslRoute
   '/tools': typeof ToolsRoute
@@ -114,6 +128,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/blacklist': typeof BlacklistRoute
+  '/blog': typeof BlogRoute
   '/dns': typeof DnsRoute
   '/email': typeof EmailRoute
   '/geo': typeof GeoRoute
@@ -122,6 +137,7 @@ export interface FileRoutesByTo {
   '/lookup': typeof LookupRoute
   '/my-ip': typeof MyIpRoute
   '/ports': typeof PortsRoute
+  '/sitemap': typeof SitemapRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ssl': typeof SslRoute
   '/tools': typeof ToolsRoute
@@ -131,6 +147,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/blacklist': typeof BlacklistRoute
+  '/blog': typeof BlogRoute
   '/dns': typeof DnsRoute
   '/email': typeof EmailRoute
   '/geo': typeof GeoRoute
@@ -139,6 +156,7 @@ export interface FileRoutesById {
   '/lookup': typeof LookupRoute
   '/my-ip': typeof MyIpRoute
   '/ports': typeof PortsRoute
+  '/sitemap': typeof SitemapRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ssl': typeof SslRoute
   '/tools': typeof ToolsRoute
@@ -149,6 +167,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/blacklist'
+    | '/blog'
     | '/dns'
     | '/email'
     | '/geo'
@@ -157,6 +176,7 @@ export interface FileRouteTypes {
     | '/lookup'
     | '/my-ip'
     | '/ports'
+    | '/sitemap'
     | '/sitemap.xml'
     | '/ssl'
     | '/tools'
@@ -165,6 +185,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/blacklist'
+    | '/blog'
     | '/dns'
     | '/email'
     | '/geo'
@@ -173,6 +194,7 @@ export interface FileRouteTypes {
     | '/lookup'
     | '/my-ip'
     | '/ports'
+    | '/sitemap'
     | '/sitemap.xml'
     | '/ssl'
     | '/tools'
@@ -181,6 +203,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/blacklist'
+    | '/blog'
     | '/dns'
     | '/email'
     | '/geo'
@@ -189,6 +212,7 @@ export interface FileRouteTypes {
     | '/lookup'
     | '/my-ip'
     | '/ports'
+    | '/sitemap'
     | '/sitemap.xml'
     | '/ssl'
     | '/tools'
@@ -198,6 +222,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BlacklistRoute: typeof BlacklistRoute
+  BlogRoute: typeof BlogRoute
   DnsRoute: typeof DnsRoute
   EmailRoute: typeof EmailRoute
   GeoRoute: typeof GeoRoute
@@ -206,6 +231,7 @@ export interface RootRouteChildren {
   LookupRoute: typeof LookupRoute
   MyIpRoute: typeof MyIpRoute
   PortsRoute: typeof PortsRoute
+  SitemapRoute: typeof SitemapRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SslRoute: typeof SslRoute
   ToolsRoute: typeof ToolsRoute
@@ -240,6 +266,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap': {
+      id: '/sitemap'
+      path: '/sitemap'
+      fullPath: '/sitemap'
+      preLoaderRoute: typeof SitemapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ports': {
@@ -298,6 +331,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DnsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blacklist': {
       id: '/blacklist'
       path: '/blacklist'
@@ -318,6 +358,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BlacklistRoute: BlacklistRoute,
+  BlogRoute: BlogRoute,
   DnsRoute: DnsRoute,
   EmailRoute: EmailRoute,
   GeoRoute: GeoRoute,
@@ -326,6 +367,7 @@ const rootRouteChildren: RootRouteChildren = {
   LookupRoute: LookupRoute,
   MyIpRoute: MyIpRoute,
   PortsRoute: PortsRoute,
+  SitemapRoute: SitemapRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SslRoute: SslRoute,
   ToolsRoute: ToolsRoute,

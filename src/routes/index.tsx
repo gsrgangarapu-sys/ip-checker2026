@@ -22,22 +22,45 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "IP Checker & IP Address Lookup - Check Your Public IP Location" },
-      { name: "description", content: "Instantly check your IP address details. Our free IP lookup tool provides accurate geolocation, ISP, proxy detection, blacklist status, and network tracking." },
-      { name: "keywords", content: "ip checker, ip address lookup, what is my ip, ip location, check public ip, ip tracker, reverse ip, blacklist checker, network intelligence" },
+      { name: "description", content: "Free IP Checker and IP Address Lookup tool. Instantly test your public IPv4/IPv6, PC local network IP, geolocation, ISP, blacklist status, and WebRTC leaks." },
+      { name: "keywords", content: "ip checker, my ip checker, ip address lookup, what is my ip, ip location, check public ip, ip tracker, ip checker cmd, ip checker malicious, ip checker minecraft, ip checker blacklist, reverse ip lookup, dns checker" },
       { name: "author", content: "DNSChecker Team" },
-      { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "IP Checker & IP Address Lookup" },
-      { property: "og:description", content: "Instantly check your IP address details with accurate geolocation, proxy, and blacklist tracking." },
+      { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" },
+      { property: "og:title", content: "IP Checker & IP Address Lookup - Check Your Public IP Location" },
+      { property: "og:description", content: "Free IP Checker and IP Address Lookup tool. Instantly test your public IPv4/IPv6, PC local IP, geolocation, and blacklist status." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://dnschecker.space/" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "IP Checker & IP Address Lookup" },
-      { name: "twitter:description", content: "Instantly check your IP address details with accurate geolocation, proxy, and blacklist tracking." },
+      { name: "twitter:description", content: "Free IP Checker and IP Address Lookup tool. Instantly test your public IPv4/IPv6, PC local IP, geolocation, and blacklist status." },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
   component: HomePage,
 });
+
+const homeFaqs = [
+  {
+    question: "What is an IP checker and what does it show?",
+    answer: "An IP checker resolves your device's current public IP address (IPv4 or IPv6), physical location (country, state, city, zip code), Internet Service Provider (ISP), Autonomous System Number (ASN), and active connection status."
+  },
+  {
+    question: "How do I check my IP address using Command Prompt (CMD)?",
+    answer: "Open Windows Command Prompt and run 'ipconfig' to check your local LAN network IP. To check your public IP from CMD, run 'curl ifconfig.me'."
+  },
+  {
+    question: "How do I check if an IP address is malicious?",
+    answer: "Use DNSChecker's Blacklist Check to test any IP or domain against 50+ Real-time Blacklists (DNSBL/RBL) including Spamhaus, AbuseIPDB, and Barracuda to detect brute-force attacks and spam."
+  },
+  {
+    question: "How can I check a Minecraft server IP and port?",
+    answer: "Enter the Minecraft server IP in our Port Scanner tool to test if port 25565 is open and reachable, and run a DNS lookup to inspect SRV records."
+  },
+  {
+    question: "What is a Reverse IP address lookup?",
+    answer: "A reverse IP lookup identifies all domain names and virtual hosts sharing the same server IP address, essential for shared hosting audits and cybersecurity investigations."
+  }
+];
 
 const tools = [
   { icon: Globe, title: "IP Checker", desc: "Inspect any IPv4 / IPv6 address: ISP, ASN, location, timezone.", to: "/my-ip" },
@@ -58,19 +81,11 @@ function HomePage() {
   return (
     <div ref={containerRef} className="min-h-screen flex flex-col selection:bg-emerald-500/30 relative">
       <Seo 
-        title="IP Checker & IP Address Lookup - Check Your Public IP Location" 
-        description="Instantly check your IP address details. Our free IP lookup tool provides accurate geolocation, ISP, proxy detection, blacklist status, and network tracking." 
-        keywords="ip checker, ip address lookup, what is my ip, ip location, check public ip, ip tracker, reverse ip, blacklist checker, network intelligence"
+        title="IP Checker &amp; IP Address Lookup - Check Your Public IP Location" 
+        description="Free IP Checker and IP Address Lookup tool. Instantly test your public IPv4/IPv6, PC local network IP, geolocation, ISP, blacklist status, and WebRTC leaks." 
+        keywords="ip checker, my ip checker, ip address lookup, what is my ip, ip location, check public ip, ip tracker, ip checker cmd, ip checker malicious, ip checker minecraft, ip checker blacklist, reverse ip lookup, dns checker"
         url="https://dnschecker.space"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "IP-Guardian Network Toolkit",
-          "url": "https://dnschecker.space",
-          "description": "Inspect any website, domain or IP with a single keystroke.",
-          "applicationCategory": "DeveloperApplication",
-          "operatingSystem": "All"
-        }}
+        faqs={homeFaqs}
       />
       <div className="absolute inset-0 z-[-1] netscope-grid opacity-[0.15]" />
       <SiteHeader />

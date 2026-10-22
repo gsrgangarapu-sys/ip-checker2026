@@ -51,19 +51,10 @@ function LookupPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Seo 
-        title="IP Address Lookup - Trace, Track & Locate an IP Instantly" 
+        title="IP Address Lookup - Trace, Track &amp; Locate an IP Instantly" 
         description="Lookup details about any IP address including location, ISP, hostname, proxy, and blacklist status. Instantly track the IP's city, country, latitude, and longitude." 
-        keywords="ip address lookup, trace ip, track ip, locate ip, check ip location, ip geolocation tracker, ip location finder, free ip lookup"
+        keywords="ip address lookup, trace ip, track ip, locate ip, check ip location, ip geolocation tracker, ip location finder, free ip lookup, reverse ip lookup, opentracker"
         url="https://dnschecker.space/lookup"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "IP Lookup Resolver",
-          "url": "https://dnschecker.space/lookup",
-          "description": "Advanced IP address lookup and intelligence information.",
-          "applicationCategory": "DeveloperApplication",
-          "operatingSystem": "All"
-        }}
       />
       <SiteHeader />
       

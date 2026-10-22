@@ -251,17 +251,12 @@ export const serverIpInfo = createServerFn({ method: "POST" })
   .inputValidator((input: { ip?: string }) => input)
   .handler(async ({ data }) => {
     try {
-      let targetIp = data.ip;
+      let targetIp = data.ip?.trim();
 
-      // If no target IP is provided, use the request's client IP
-      if (!targetIp) {
-        targetIp = getRequestIP({ xForwardedFor: true });
-      }
-
+      // If user provided a domain or URL, resolve it to an IP
       if (targetIp && !isIp(targetIp)) {
         try {
-          // Clean domain if it's a URL
-          let domain = targetIp.trim();
+          let domain = targetIp;
           if (domain.startsWith("http://") || domain.startsWith("https://")) {
             domain = new URL(domain).hostname;
           } else if (domain.includes("/")) {
@@ -270,10 +265,22 @@ export const serverIpInfo = createServerFn({ method: "POST" })
           const ips = await dns.promises.resolve4(domain);
           targetIp = ips[0];
         } catch (e) {
-          throw new Error("Could not resolve domain to IP");
+          throw new Error("Could not resolve domain to IP address");
         }
       }
-      
+
+      // If no explicit IP was searched by user, detect from request
+      if (!targetIp) {
+        const reqIp = getRequestIP({ xForwardedFor: true })?.trim();
+        // If request IP is a valid public IP, use it
+        if (reqIp && isIp(reqIp) && !isPrivateOrReservedIp(reqIp)) {
+          targetIp = reqIp;
+        } else {
+          // If running locally or on loopback, leave targetIp undefined so fetchIpInfo queries public IP
+          targetIp = undefined;
+        }
+      }
+
       const info = await fetchIpInfo(targetIp);
       return info;
     } catch (e: any) {

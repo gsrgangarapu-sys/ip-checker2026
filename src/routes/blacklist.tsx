@@ -9,6 +9,17 @@ import { blacklistCheck } from "@/lib/network.functions";
 import { Ban, Loader2, ArrowRight, ShieldAlert, CheckCircle2, AlertTriangle, ShieldCheck, Check, Info, Shield, Search } from "lucide-react";
 
 export const Route = createFileRoute("/blacklist")({
+  head: () => ({
+    meta: [
+      { title: "IP Checker Malicious & Blacklist Check - Scan IP Reputation | DNSChecker" },
+      { name: "description", content: "Check if an IP address or domain is blacklisted or malicious. Test IP reputation against 50+ DNSBL anti-spam databases, Spamhaus, Barracuda, and threat feeds." },
+      { name: "keywords", content: "ip checker malicious, ip checker blacklist, ip reputation check, check if ip is blacklisted, spamhaus lookup, mxtoolbox blacklist, dnsbl check, rbl check, email blacklist check" },
+      { property: "og:title", content: "IP Checker Malicious & Blacklist Check" },
+      { property: "og:description", content: "Check if an IP address or domain is blacklisted or malicious. Test IP reputation against 50+ DNSBL databases." },
+      { property: "og:url", content: "https://dnschecker.space/blacklist" },
+    ],
+    links: [{ rel: "canonical", href: "/blacklist" }],
+  }),
   component: BlacklistPage,
 });
 
@@ -57,19 +68,10 @@ function BlacklistPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Seo 
-        title="IP Blacklist Checker — Test IP & Domain Reputation" 
-        description="Check if your IP or domain is listed on global anti-spam blacklists (DNSBL). Test IP reputation and detect malware risks instantly." 
-        keywords="ip blacklist checker, domain blacklist, check ip reputation, dnsbl check, spamhaus check, is my ip blacklisted, email blacklist, website malware scanner"
+        title="IP Checker Malicious & Blacklist Check - Scan IP Reputation" 
+        description="Check if an IP address or domain is blacklisted or malicious. Test IP reputation against 50+ DNSBL anti-spam databases, Spamhaus, Barracuda, and threat feeds." 
+        keywords="ip checker malicious, ip checker blacklist, ip reputation check, check if ip is blacklisted, spamhaus lookup, mxtoolbox blacklist, dnsbl check, rbl check, email blacklist check"
         url="https://dnschecker.space/blacklist"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "IP Blacklist Checker",
-          "url": "https://dnschecker.space/blacklist",
-          "description": "Check if an IP or domain is listed on anti-spam blacklists.",
-          "applicationCategory": "DeveloperApplication",
-          "operatingSystem": "All"
-        }}
       />
       <SiteHeader />
       

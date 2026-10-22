@@ -8,14 +8,30 @@ import { SeoMyIpContent } from "@/components/SeoMyIpContent";
 import { motion } from "framer-motion";
 import { ShieldCheck, Info } from "lucide-react";
 
+const myIpFaqs = [
+  {
+    question: "What is my public IP address vs local IP address?",
+    answer: "Your public IP is the unique address your ISP assigns you that websites see on the internet. Your local IP (e.g., 192.168.1.X) is used internally by your router to route traffic between your home devices."
+  },
+  {
+    question: "How do I check my local IP on Windows or Mac?",
+    answer: "On Windows, open CMD and type 'ipconfig'. On Mac or Linux, open Terminal and run 'ifconfig' or 'ip addr'."
+  },
+  {
+    question: "What does a WebRTC leak test show?",
+    answer: "A WebRTC leak occurs when your web browser exposes your real local or public IP address via STUN requests, even when you have an active VPN connection."
+  }
+];
+
 export const Route = createFileRoute("/my-ip")({
   head: () => ({
     meta: [
-      { title: "What Is My IP Address? - Check Your IP & Location" },
-      { name: "description", content: "Find out what your public IP address and location is. Instantly check your network details, geolocation, ISP, and browser fingerprint with our free IP tracker." },
+      { title: "What Is My IP Address? - Check Your IP & Location | DNSChecker" },
+      { name: "description", content: "Find out what your public and local IP address is. Instantly check PC LAN IP, geolocation, ISP, WebRTC leak status, and browser fingerprint with our free IP tracker." },
+      { name: "keywords", content: "what is my ip address, my ip checker, check ip, public ip address, pc local ip, webrtc leak test, ip location, ip tracker, my isp, free ip scanner, reverse ip lookup" },
       { property: "og:title", content: "What Is My IP Address? - Check Your IP & Location" },
-      { property: "og:description", content: "Find out what your public IP address and location is. Instantly check your network details." },
-      { property: "og:url", content: "/my-ip" },
+      { property: "og:description", content: "Find out what your public and local IP address is. Instantly check PC LAN IP, geolocation, ISP, and WebRTC leak status." },
+      { property: "og:url", content: "https://dnschecker.space/my-ip" },
     ],
     links: [{ rel: "canonical", href: "/my-ip" }],
   }),
@@ -38,19 +54,11 @@ function MyIpPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Seo 
-        title="What Is My IP Address? - Check Your IP & Location" 
-        description="Find out what your public IP address and location is. Instantly check your network details, geolocation, ISP, and browser fingerprint with our free IP tracker." 
-        keywords="what is my ip address, check ip, public ip address, find my ip location, ip tracker, show my ip, my isp, free ip scanner"
+        title="What Is My IP Address? - Check Your IP &amp; Location" 
+        description="Find out what your public and local IP address is. Instantly check PC LAN IP, geolocation, ISP, WebRTC leak status, and browser fingerprint with our free IP tracker." 
+        keywords="what is my ip address, my ip checker, check ip, public ip address, pc local ip, webrtc leak test, ip location, ip tracker, my isp, free ip scanner, reverse ip lookup"
         url="https://dnschecker.space/my-ip"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "What Is My IP Address",
-          "url": "https://dnschecker.space/my-ip",
-          "description": "Find your current public IP address and connection details.",
-          "applicationCategory": "DeveloperApplication",
-          "operatingSystem": "All"
-        }}
+        faqs={myIpFaqs}
       />
       <SiteHeader />
       

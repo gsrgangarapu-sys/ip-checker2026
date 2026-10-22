@@ -69,10 +69,10 @@ function RootComponent() {
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <Helmet>
-          <title>IP Guardian - IP Lookup & VPN Detection</title>
+          <title>DNSChecker — Free IP Checker &amp; Network Intelligence Tools</title>
           <meta
             name="description"
-            content="Professional IP lookup, VPN detection, WHOIS, DNS lookup, and cyber intelligence tools."
+            content="Instantly check your public and local IP address, geolocation, ISP, DNS records, SSL certificates, and network security intelligence."
           />
         </Helmet>
         <div className="ambient-glow" />

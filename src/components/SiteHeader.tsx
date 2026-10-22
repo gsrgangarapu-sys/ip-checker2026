@@ -12,6 +12,7 @@ const links = [
   { to: "/email", label: "Email" },
   { to: "/ports", label: "Ports" },
   { to: "/geo", label: "Geo" },
+  { to: "/blog", label: "Blog" },
 ];
 
 export function SiteHeader() {
