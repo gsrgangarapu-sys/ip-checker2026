@@ -8,6 +8,17 @@ import { IpDashboard } from "@/components/IpDashboard";
 import { MapPin, Search, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/geo")({
+  head: () => ({
+    meta: [
+      { title: "IP Geolocation Lookup — Map Any IP Address to Location | DNSChecker" },
+      { name: "description", content: "Free IP Geolocation Lookup tool. Map any IP address or domain to country, region, city, postal code, and exact latitude/longitude coordinates on an interactive map." },
+      { name: "keywords", content: "ip geolocation, ip map, locate ip on map, ip location lookup, ip coordinates, city level ip tracker, geoip lookup" },
+      { property: "og:title", content: "IP Geolocation Lookup — Map Any IP Address to Location" },
+      { property: "og:description", content: "Map any IP address or domain to country, region, city, and coordinates on an interactive map." },
+      { property: "og:url", content: "https://dnschecker.space/geo" },
+    ],
+    links: [{ rel: "canonical", href: "/geo" }],
+  }),
   component: GeoPage,
 });
 

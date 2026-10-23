@@ -9,6 +9,17 @@ import { emailCheck } from "@/lib/network.functions";
 import { Mail, Loader2, ArrowRight, ShieldCheck, AlertTriangle, Terminal } from "lucide-react";
 
 export const Route = createFileRoute("/email")({
+  head: () => ({
+    meta: [
+      { title: "Email Security Checker — Verify MX, SPF & DMARC | DNSChecker" },
+      { name: "description", content: "Verify your domain's email infrastructure. Check mail exchange (MX) availability, sender policy framework (SPF), and DMARC configuration in real time." },
+      { name: "keywords", content: "email security check, mx record check, check spf record, check dmarc record, email deliverability test, domain email setup, mail server test, avoid spam folder" },
+      { property: "og:title", content: "Email Security Checker — Verify MX, SPF & DMARC" },
+      { property: "og:description", content: "Verify MX, SPF, and DMARC records for domain email security." },
+      { property: "og:url", content: "https://dnschecker.space/email" },
+    ],
+    links: [{ rel: "canonical", href: "/email" }],
+  }),
   component: EmailPage,
 });
 

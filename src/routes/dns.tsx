@@ -10,11 +10,12 @@ import { Server, Loader2, ArrowRight, Shield, Globe, Terminal, Activity } from "
 export const Route = createFileRoute("/dns")({
   head: () => ({
     meta: [
-      { title: "DNS Lookup — A, AAAA, MX, NS, TXT, SOA | IP Guardian" },
-      { name: "description", content: "Query DNS records over HTTPS via Cloudflare. Supports A, AAAA, MX, NS, TXT, SOA, CNAME, CAA and PTR (reverse DNS)." },
-      { property: "og:title", content: "DNS Lookup — IP Guardian" },
-      { property: "og:description", content: "DNS-over-HTTPS record lookups." },
-      { property: "og:url", content: "/dns" },
+      { title: "DNS Check & Global DNS Propagation Checker | DNSChecker" },
+      { name: "description", content: "Free online DNS check tool. Check global DNS records including A, AAAA, MX, NS, TXT, CNAME, SOA, and PTR reverse DNS. Test DNS propagation and verify server resolution." },
+      { name: "keywords", content: "dns check, dns checker, check dns propagation, dns lookup, mx record check, txt record lookup, global dns check, reverse dns ptr" },
+      { property: "og:title", content: "DNS Check & Global DNS Propagation Checker" },
+      { property: "og:description", content: "Free global DNS check tool. Check A, AAAA, MX, NS, TXT, CNAME, SOA, and PTR reverse DNS." },
+      { property: "og:url", content: "https://dnschecker.space/dns" },
     ],
     links: [{ rel: "canonical", href: "/dns" }],
   }),
@@ -72,19 +73,10 @@ function DnsPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Seo 
-        title="DNS Lookup & Resolver — Check A, MX, NS, TXT Records" 
-        description="Free global DNS lookup tool. Query DNS records over HTTPS via Cloudflare. Supports A, AAAA, MX, NS, TXT, SOA, CNAME, CAA and PTR (reverse DNS)." 
-        keywords="dns lookup, dns records, check dns, find dns records, txt record lookup, mx record lookup, reverse dns, ns lookup, ip-guardian dns tool"
+        title="DNS Check &amp; Global DNS Propagation Checker" 
+        description="Free online DNS check tool. Check global DNS records including A, AAAA, MX, NS, TXT, CNAME, SOA, and PTR reverse DNS. Test DNS propagation and verify server resolution." 
+        keywords="dns check, dns checker, check dns propagation, dns lookup, mx record check, txt record lookup, global dns check, reverse dns ptr"
         url="https://dnschecker.space/dns"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "DNS Lookup Tool",
-          "url": "https://dnschecker.space/dns",
-          "description": "Perform a comprehensive DNS lookup for any domain.",
-          "applicationCategory": "DeveloperApplication",
-          "operatingSystem": "All"
-        }}
       />
       <SiteHeader />
       

@@ -8,6 +8,17 @@ import { IpDashboard } from "@/components/IpDashboard";
 import { Server, Search, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/hosting")({
+  head: () => ({
+    meta: [
+      { title: "Website to IP Checker & Hosting Provider Lookup | DNSChecker" },
+      { name: "description", content: "Free website to IP checker. Find the server IP address, web hosting company, datacenter location, and ASN of any website instantly." },
+      { name: "keywords", content: "website to ip, website ip checker, find website ip address, hosting checker, who hosts this website, website hosting lookup, server ip lookup, datacenter location" },
+      { property: "og:title", content: "Website to IP Checker & Hosting Provider Lookup" },
+      { property: "og:description", content: "Discover the hosting provider, server IP address, datacenter location, and ASN of any website." },
+      { property: "og:url", content: "https://dnschecker.space/hosting" },
+    ],
+    links: [{ rel: "canonical", href: "/hosting" }],
+  }),
   component: HostingPage,
 });
 
@@ -48,19 +59,10 @@ function HostingPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Seo 
-        title="Hosting Checker — Detect Website Hosting Provider" 
-        description="Discover the hosting provider, datacenter location, ASN, and organizational infrastructure behind any IP or website. Detect ISP and web hosts." 
-        keywords="hosting checker, who hosts this website, find hosting provider, detect web host, website hosting lookup, isp lookup, asn lookup, datacenter location"
+        title="Website to IP Checker &amp; Hosting Provider Lookup" 
+        description="Free website to IP checker. Find the server IP address, web hosting company, datacenter location, and ASN of any website instantly." 
+        keywords="website to ip, website ip checker, find website ip address, hosting checker, who hosts this website, website hosting lookup, server ip lookup, datacenter location"
         url="https://dnschecker.space/hosting"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "Hosting Provider Detector",
-          "url": "https://dnschecker.space/hosting",
-          "description": "Detect the hosting provider for any website or IP address.",
-          "applicationCategory": "DeveloperApplication",
-          "operatingSystem": "All"
-        }}
       />
       <SiteHeader />
       

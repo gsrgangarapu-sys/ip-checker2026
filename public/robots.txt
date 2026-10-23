@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://dnschecker.space/sitemap.xml
+Sitemap: https://www.dnschecker.space/sitemap.xml

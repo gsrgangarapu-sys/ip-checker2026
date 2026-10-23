@@ -11,11 +11,12 @@ import { Mail, RefreshCw, Terminal, Shield, ArrowRight, Activity, Eye } from "lu
 export const Route = createFileRoute("/headers")({
   head: () => ({
     meta: [
-      { title: "HTTP Headers Inspector — See Your Request | IP Guardian" },
-      { name: "description", content: "Inspect every HTTP header your browser sends — User-Agent, Accept, language, forwarded IP and more." },
-      { property: "og:title", content: "HTTP Headers — IP Guardian" },
-      { property: "og:description", content: "Live inspection of your outgoing HTTP request headers." },
-      { property: "og:url", content: "/headers" },
+      { title: "HTTP Security Headers Inspector & Cyber Audit | DNSChecker" },
+      { name: "description", content: "Inspect incoming and outgoing HTTP request headers. Audit HSTS, Content-Security-Policy (CSP), X-Frame-Options, and client fingerprint data." },
+      { name: "keywords", content: "http headers inspector, check security headers, hsts checker, csp checker, x-frame-options, user agent analyzer, cyber security header audit" },
+      { property: "og:title", content: "HTTP Security Headers Inspector & Cyber Audit" },
+      { property: "og:description", content: "Live inspection of HTTP security headers, User-Agent, and client fingerprint data." },
+      { property: "og:url", content: "https://dnschecker.space/headers" },
     ],
     links: [{ rel: "canonical", href: "/headers" }],
   }),

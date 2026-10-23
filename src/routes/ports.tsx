@@ -9,6 +9,17 @@ import { portScan } from "@/lib/network.functions";
 import { Server, Loader2, ArrowRight, ShieldAlert, CheckCircle2, AlertTriangle, ShieldCheck, DoorOpen, DoorClosed } from "lucide-react";
 
 export const Route = createFileRoute("/ports")({
+  head: () => ({
+    meta: [
+      { title: "Port Scanner — Check Open Ports & Server Firewall Security | DNSChecker" },
+      { name: "description", content: "Free online port scanner. Probe common service ports (80, 443, 22, 21, 25, 3306, 8080) on any IP or domain to test firewall configuration and perimeter security." },
+      { name: "keywords", content: "port scanner, check open ports, test open port, port 80 443 22, firewall port check, open port test, minecraft port test" },
+      { property: "og:title", content: "Port Scanner — Check Open Ports & Server Firewall Security" },
+      { property: "og:description", content: "Free online port scanner. Probe service ports on any IP or domain." },
+      { property: "og:url", content: "https://dnschecker.space/ports" },
+    ],
+    links: [{ rel: "canonical", href: "/ports" }],
+  }),
   component: PortsPage,
 });
 

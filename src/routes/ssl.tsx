@@ -9,6 +9,17 @@ import { sslLookup } from "@/lib/network.functions";
 import { ShieldCheck, Loader2, ArrowRight, Lock, AlertTriangle, CheckCircle2, Server, Link as LinkIcon } from "lucide-react";
 
 export const Route = createFileRoute("/ssl")({
+  head: () => ({
+    meta: [
+      { title: "SSL Checker - Check SSL Certificate & Verify TLS Installation | DNSChecker" },
+      { name: "description", content: "Free SSL Checker and TLS verification tool. Verify certificate validity, intermediate CA chains, expiration dates, and protocol security in real time." },
+      { name: "keywords", content: "ssl check, ssl checker, check ssl certificate, verify ssl installation, tls test, ssl certificate checker, ssl expiry check, ssl mixed content" },
+      { property: "og:title", content: "SSL Checker - Check SSL Certificate & Verify TLS Installation" },
+      { property: "og:description", content: "Free SSL Checker tool. Verify certificate validity, intermediate CA chains, and expiration dates." },
+      { property: "og:url", content: "https://dnschecker.space/ssl" },
+    ],
+    links: [{ rel: "canonical", href: "/ssl" }],
+  }),
   component: SslPage,
 });
 
