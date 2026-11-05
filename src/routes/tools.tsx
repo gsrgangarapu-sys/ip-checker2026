@@ -14,7 +14,7 @@ export const Route = createFileRoute("/tools")({
       { title: "Network Tools — WHOIS, DNS, Ports, SSL | DNSChecker" },
       { name: "description", content: "Ten production-grade lookups in one console — IP, DNS, WHOIS, SSL, security headers, blacklist, email, ports & geolocation." },
     ],
-    links: [{ rel: "canonical", href: "/tools" }],
+    links: [{ rel: "canonical", href: "https://dnschecker.space/tools" }],
   }),
   component: ToolsPage,
 });

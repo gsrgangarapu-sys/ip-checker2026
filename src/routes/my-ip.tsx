@@ -28,12 +28,11 @@ export const Route = createFileRoute("/my-ip")({
     meta: [
       { title: "What Is My IP Address? - Check Your IP & Location | DNSChecker" },
       { name: "description", content: "Find out what your public and local IP address is. Instantly check PC LAN IP, geolocation, ISP, WebRTC leak status, and browser fingerprint with our free IP tracker." },
-      { name: "keywords", content: "what is my ip address, my ip checker, check ip, public ip address, pc local ip, webrtc leak test, ip location, ip tracker, my isp, free ip scanner, reverse ip lookup" },
       { property: "og:title", content: "What Is My IP Address? - Check Your IP & Location" },
       { property: "og:description", content: "Find out what your public and local IP address is. Instantly check PC LAN IP, geolocation, ISP, and WebRTC leak status." },
       { property: "og:url", content: "https://dnschecker.space/my-ip" },
     ],
-    links: [{ rel: "canonical", href: "/my-ip" }],
+    links: [{ rel: "canonical", href: "https://dnschecker.space/my-ip" }],
   }),
   component: MyIpPage,
 });

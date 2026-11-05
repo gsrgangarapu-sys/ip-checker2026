@@ -12,12 +12,11 @@ export const Route = createFileRoute("/hosting")({
     meta: [
       { title: "Website to IP Checker & Hosting Provider Lookup | DNSChecker" },
       { name: "description", content: "Free website to IP checker. Find the server IP address, web hosting company, datacenter location, and ASN of any website instantly." },
-      { name: "keywords", content: "website to ip, website ip checker, find website ip address, hosting checker, who hosts this website, website hosting lookup, server ip lookup, datacenter location" },
       { property: "og:title", content: "Website to IP Checker & Hosting Provider Lookup" },
       { property: "og:description", content: "Discover the hosting provider, server IP address, datacenter location, and ASN of any website." },
       { property: "og:url", content: "https://dnschecker.space/hosting" },
     ],
-    links: [{ rel: "canonical", href: "/hosting" }],
+    links: [{ rel: "canonical", href: "https://dnschecker.space/hosting" }],
   }),
   component: HostingPage,
 });

@@ -16,13 +16,12 @@ export const Route = createFileRoute("/blog")({
     meta: [
       { title: "DNS, IP & SSL Intelligence Knowledge Base | DNSChecker Guides" },
       { name: "description", content: "Comprehensive engineering tutorials on global DNS propagation, website to IP lookups, SSL certificate validation, malicious IP detection, and email security." },
-      { name: "keywords", content: "dns check, website ip checker, ssl check, dns propagation check, email security check, port scanner, ip checker cmd, ip checker malicious, reverse ip lookup, what is my ip" },
       { property: "og:title", content: "DNS, IP & SSL Intelligence Knowledge Base | DNSChecker" },
       { property: "og:description", content: "In-depth network engineering guides, cybersecurity tutorials, and lookup diagnostics." },
       { property: "og:url", content: "https://dnschecker.space/blog" },
       { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" }
     ],
-    links: [{ rel: "canonical", href: "/blog" }],
+    links: [{ rel: "canonical", href: "https://dnschecker.space/blog" }],
   }),
   component: BlogPage,
 });

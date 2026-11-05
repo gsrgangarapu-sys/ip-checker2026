@@ -1,20 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { getRequestHeaders } from "@tanstack/react-start/server";
+
+// Always use the canonical domain. Building sitemap URLs from the request
+// Host header lets www, preview and staging hosts leak into the sitemap,
+// which splits indexing signals across duplicates.
+const baseUrl = "https://dnschecker.space";
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        let domain = "dnschecker.space";
-        try {
-          const headers = getRequestHeaders() as Record<string, string>;
-          const host = headers?.["x-forwarded-host"] || headers?.["host"];
-          if (host && !host.includes("localhost") && !host.includes("127.0.0.1")) {
-            domain = host;
-          }
-        } catch (e) {}
-
-        const baseUrl = `https://${domain}`;
 
         const entries = [
           { path: "/", priority: "1.0", changefreq: "daily" },

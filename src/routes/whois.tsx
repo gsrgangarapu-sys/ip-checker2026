@@ -17,7 +17,7 @@ export const Route = createFileRoute("/whois")({
       { property: "og:description", content: "Instantly look up registration data, contact details, nameservers, and more for any domain name or IP address using WHOIS." },
       { property: "og:url", content: "/whois" },
     ],
-    links: [{ rel: "canonical", href: "/whois" }],
+    links: [{ rel: "canonical", href: "https://dnschecker.space/whois" }],
   }),
   component: WhoisPage,
 });

@@ -8,7 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import * as React from "react";
-import { Helmet, HelmetProvider } from "react-helmet-async";
+import { HelmetProvider } from "react-helmet-async";
 import ReactGA from "react-ga4";
 
 import appCss from "../styles.css?url";
@@ -54,8 +54,11 @@ function RootComponent() {
   const router = useRouter();
 
   React.useEffect(() => {
-    // Initialize GA4 with a placeholder ID
-    ReactGA.initialize("G-XXXXXXXXXX");
+    // GA4 is disabled until a real measurement ID is configured.
+    // The previous placeholder ID ("G-XXXXXXXXXX") sent data nowhere.
+    const GA_MEASUREMENT_ID = "";
+    if (!GA_MEASUREMENT_ID) return;
+    ReactGA.initialize(GA_MEASUREMENT_ID);
     ReactGA.send("pageview");
 
     const unsubscribe = router.subscribe('onResolved', (event: any) => {
@@ -68,13 +71,9 @@ function RootComponent() {
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
-        <Helmet>
-          <title>DNSChecker — Free IP Checker &amp; Network Intelligence Tools</title>
-          <meta
-            name="description"
-            content="Instantly check your public and local IP address, geolocation, ISP, DNS records, SSL certificates, and network security intelligence."
-          />
-        </Helmet>
+        {/* No global <title>/description here: each route's TanStack head()
+            owns its own title, description and canonical. A global Helmet
+            title duplicates them on every page. */}
         <div className="ambient-glow" />
         <Outlet />
       </QueryClientProvider>

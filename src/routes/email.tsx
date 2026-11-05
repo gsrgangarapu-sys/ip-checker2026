@@ -13,12 +13,11 @@ export const Route = createFileRoute("/email")({
     meta: [
       { title: "Email Security Checker — Verify MX, SPF & DMARC | DNSChecker" },
       { name: "description", content: "Verify your domain's email infrastructure. Check mail exchange (MX) availability, sender policy framework (SPF), and DMARC configuration in real time." },
-      { name: "keywords", content: "email security check, mx record check, check spf record, check dmarc record, email deliverability test, domain email setup, mail server test, avoid spam folder" },
       { property: "og:title", content: "Email Security Checker — Verify MX, SPF & DMARC" },
       { property: "og:description", content: "Verify MX, SPF, and DMARC records for domain email security." },
       { property: "og:url", content: "https://dnschecker.space/email" },
     ],
-    links: [{ rel: "canonical", href: "/email" }],
+    links: [{ rel: "canonical", href: "https://dnschecker.space/email" }],
   }),
   component: EmailPage,
 });
