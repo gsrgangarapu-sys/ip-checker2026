@@ -1,0 +1,533 @@
+diff --git a/public/robots.txt b/public/robots.txt
+index b52bf89..0f675eb 100644
+--- a/public/robots.txt
++++ b/public/robots.txt
+@@ -2,4 +2,3 @@ User-agent: *
+ Allow: /
+ 
+ Sitemap: https://dnschecker.space/sitemap.xml
+-Sitemap: https://www.dnschecker.space/sitemap.xml
+diff --git a/public/sitemap.xml b/public/sitemap.xml
+deleted file mode 100644
+index d3e5589..0000000
+--- a/public/sitemap.xml
++++ /dev/null
+@@ -1,93 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+-  <url>
+-    <loc>https://dnschecker.space/</loc>
+-    <lastmod>2026-10-22</lastmod>
+-    <changefreq>daily</changefreq>
+-    <priority>1.0</priority>
+-  </url>
+-  <url>
+-    <loc>https://dnschecker.space/my-ip</loc>
+-    <lastmod>2026-10-22</lastmod>
+-    <changefreq>daily</changefreq>
+-    <priority>0.9</priority>
+-  </url>
+-  <url>
+-    <loc>https://dnschecker.space/lookup</loc>
+-    <lastmod>2026-10-22</lastmod>
+-    <changefreq>weekly</changefreq>
+-    <priority>0.9</priority>
+-  </url>
+-  <url>
+-    <loc>https://dnschecker.space/tools</loc>
+-    <lastmod>2026-10-22</lastmod>
+-    <changefreq>weekly</changefreq>
+-    <priority>0.8</priority>
+-  </url>
+-  <url>
+-    <loc>https://dnschecker.space/blog</loc>
+-    <lastmod>2026-10-22</lastmod>
+-    <changefreq>daily</changefreq>
+-    <priority>0.9</priority>
+-  </url>
+-  <url>
+-    <loc>https://dnschecker.space/blacklist</loc>
+-    <lastmod>2026-10-22</lastmod>
+-    <changefreq>weekly</changefreq>
+-    <priority>0.8</priority>
+-  </url>
+-  <url>
+-    <loc>https://dnschecker.space/dns</loc>
+-    <lastmod>2026-10-22</lastmod>
+-    <changefreq>weekly</changefreq>
+-    <priority>0.8</priority>
+-  </url>
+-  <url>
+-    <loc>https://dnschecker.space/email</loc>
+-    <lastmod>2026-10-22</lastmod>
+-    <changefreq>weekly</changefreq>
+-    <priority>0.8</priority>
+-  </url>
+-  <url>
+-    <loc>https://dnschecker.space/geo</loc>
+-    <lastmod>2026-10-22</lastmod>
+-    <changefreq>weekly</changefreq>
+-    <priority>0.8</priority>
+-  </url>
+-  <url>
+-    <loc>https://dnschecker.space/headers</loc>
+-    <lastmod>2026-10-22</lastmod>
+-    <changefreq>weekly</changefreq>
+-    <priority>0.8</priority>
+-  </url>
+-  <url>
+-    <loc>https://dnschecker.space/hosting</loc>
+-    <lastmod>2026-10-22</lastmod>
+-    <changefreq>weekly</changefreq>
+-    <priority>0.8</priority>
+-  </url>
+-  <url>
+-    <loc>https://dnschecker.space/ports</loc>
+-    <lastmod>2026-10-22</lastmod>
+-    <changefreq>weekly</changefreq>
+-    <priority>0.8</priority>
+-  </url>
+-  <url>
+-    <loc>https://dnschecker.space/ssl</loc>
+-    <lastmod>2026-10-22</lastmod>
+-    <changefreq>weekly</changefreq>
+-    <priority>0.8</priority>
+-  </url>
+-  <url>
+-    <loc>https://dnschecker.space/whois</loc>
+-    <lastmod>2026-10-22</lastmod>
+-    <changefreq>weekly</changefreq>
+-    <priority>0.8</priority>
+-  </url>
+-  <url>
+-    <loc>https://dnschecker.space/sitemap</loc>
+-    <lastmod>2026-10-22</lastmod>
+-    <changefreq>weekly</changefreq>
+-    <priority>0.7</priority>
+-  </url>
+-</urlset>
+diff --git a/src/components/Seo.tsx b/src/components/Seo.tsx
+index 7403271..17a7961 100644
+--- a/src/components/Seo.tsx
++++ b/src/components/Seo.tsx
+@@ -8,28 +8,33 @@ interface FaqItem {
+ interface SeoProps {
+   title?: string;
+   description?: string;
++  // Kept for backwards compatibility with existing route files.
++  // The keywords meta tag is not emitted: Google ignores it.
+   keywords?: string;
+   url?: string;
+   faqs?: FaqItem[];
+   schema?: Record<string, any> | Array<Record<string, any>>;
+ }
+ 
+-export function Seo({ 
+-  title = "DNSChecker — Free IP Checker & Network Intelligence Tools", 
+-  description = "Instantly check your public IPv4/IPv6, PC local network IP, geolocation, ISP, DNS, SSL, and security reputation with our free IP checker toolkit.", 
+-  keywords = "ip checker, my ip checker, ip address lookup, what is my ip, ip checker cmd, ip checker malicious, ip checker minecraft, ip checker blacklist, reverse ip lookup, dns checker",
++// Schema-only SEO helper.
++//
++// Title, meta description, canonical, Open Graph and Twitter tags are owned by
++// each route's TanStack `head()` (SSR) — do NOT emit them here as well, or the
++// page will contain duplicate/conflicting tags. This component only injects
++// JSON-LD structured data (WebApplication + FAQPage).
++export function Seo({
++  title = "DNSChecker — Free IP Checker & Network Intelligence Tools",
++  description = "Instantly check your public IPv4/IPv6, PC local network IP, geolocation, ISP, DNS, SSL, and security reputation with our free IP checker toolkit.",
+   url = "https://dnschecker.space",
+   faqs,
+   schema
+ }: SeoProps) {
+-  const fullTitle = title.includes("DNSChecker") ? title : `${title} | DNSChecker`;
+-
+   const webAppSchema = {
+     "@context": "https://schema.org",
+     "@type": "WebApplication",
+     "name": "DNSChecker",
+     "alternateName": ["DNS Checker", "IP Checker Tool", "DNSChecker Space"],
+-    "headline": fullTitle,
++    "headline": title,
+     "description": description,
+     "url": url,
+     "applicationCategory": "NetworkingApplication",
+@@ -38,14 +43,9 @@ export function Seo({
+       "@type": "Offer",
+       "price": "0",
+       "priceCurrency": "USD"
+-    },
+-    "aggregateRating": {
+-      "@type": "AggregateRating",
+-      "ratingValue": "4.9",
+-      "ratingCount": "12840",
+-      "bestRating": "5",
+-      "worstRating": "1"
+     }
++    // No AggregateRating: ratings must come from real, verifiable user
++    // reviews. A fabricated rating violates Google's structured data policy.
+   };
+ 
+   const faqSchema = faqs && faqs.length > 0 ? {
+@@ -61,33 +61,12 @@ export function Seo({
+     }))
+   } : null;
+ 
+-  const schemasToRender = schema 
++  const schemasToRender = schema
+     ? (Array.isArray(schema) ? schema : [schema])
+     : (faqSchema ? [webAppSchema, faqSchema] : [webAppSchema]);
+ 
+   return (
+     <Helmet>
+-      <title>{fullTitle}</title>
+-      <meta name="description" content={description} />
+-      <meta name="keywords" content={keywords} />
+-      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+-      <meta name="author" content="DNSChecker Team" />
+-      <link rel="canonical" href={url} />
+-      
+-      {/* Open Graph / Facebook */}
+-      <meta property="og:type" content="website" />
+-      <meta property="og:url" content={url} />
+-      <meta property="og:title" content={fullTitle} />
+-      <meta property="og:description" content={description} />
+-      <meta property="og:site_name" content="DNSChecker" />
+-      
+-      {/* Twitter */}
+-      <meta name="twitter:card" content="summary_large_image" />
+-      <meta name="twitter:url" content={url} />
+-      <meta name="twitter:title" content={fullTitle} />
+-      <meta name="twitter:description" content={description} />
+-      
+-      {/* JSON-LD Schemas for Rich Google SERP Features */}
+       {schemasToRender.map((s, idx) => (
+         <script key={idx} type="application/ld+json">
+           {JSON.stringify(s)}
+diff --git a/src/routes/__root.tsx b/src/routes/__root.tsx
+index 2d64653..971f76e 100644
+--- a/src/routes/__root.tsx
++++ b/src/routes/__root.tsx
+@@ -8,7 +8,7 @@ import {
+   Scripts,
+ } from "@tanstack/react-router";
+ import * as React from "react";
+-import { Helmet, HelmetProvider } from "react-helmet-async";
++import { HelmetProvider } from "react-helmet-async";
+ import ReactGA from "react-ga4";
+ 
+ import appCss from "../styles.css?url";
+@@ -54,8 +54,11 @@ function RootComponent() {
+   const router = useRouter();
+ 
+   React.useEffect(() => {
+-    // Initialize GA4 with a placeholder ID
+-    ReactGA.initialize("G-XXXXXXXXXX");
++    // GA4 is disabled until a real measurement ID is configured.
++    // The previous placeholder ID ("G-XXXXXXXXXX") sent data nowhere.
++    const GA_MEASUREMENT_ID = "";
++    if (!GA_MEASUREMENT_ID) return;
++    ReactGA.initialize(GA_MEASUREMENT_ID);
+     ReactGA.send("pageview");
+ 
+     const unsubscribe = router.subscribe('onResolved', (event: any) => {
+@@ -68,13 +71,9 @@ function RootComponent() {
+   return (
+     <HelmetProvider>
+       <QueryClientProvider client={queryClient}>
+-        <Helmet>
+-          <title>DNSChecker — Free IP Checker &amp; Network Intelligence Tools</title>
+-          <meta
+-            name="description"
+-            content="Instantly check your public and local IP address, geolocation, ISP, DNS records, SSL certificates, and network security intelligence."
+-          />
+-        </Helmet>
++        {/* No global <title>/description here: each route's TanStack head()
++            owns its own title, description and canonical. A global Helmet
++            title duplicates them on every page. */}
+         <div className="ambient-glow" />
+         <Outlet />
+       </QueryClientProvider>
+diff --git a/src/routes/blacklist.tsx b/src/routes/blacklist.tsx
+index d2f2f1d..f68e8d6 100644
+--- a/src/routes/blacklist.tsx
++++ b/src/routes/blacklist.tsx
+@@ -13,12 +13,11 @@ export const Route = createFileRoute("/blacklist")({
+     meta: [
+       { title: "IP Checker Malicious & Blacklist Check - Scan IP Reputation | DNSChecker" },
+       { name: "description", content: "Check if an IP address or domain is blacklisted or malicious. Test IP reputation against 50+ DNSBL anti-spam databases, Spamhaus, Barracuda, and threat feeds." },
+-      { name: "keywords", content: "ip checker malicious, ip checker blacklist, ip reputation check, check if ip is blacklisted, spamhaus lookup, mxtoolbox blacklist, dnsbl check, rbl check, email blacklist check" },
+       { property: "og:title", content: "IP Checker Malicious & Blacklist Check" },
+       { property: "og:description", content: "Check if an IP address or domain is blacklisted or malicious. Test IP reputation against 50+ DNSBL databases." },
+       { property: "og:url", content: "https://dnschecker.space/blacklist" },
+     ],
+-    links: [{ rel: "canonical", href: "/blacklist" }],
++    links: [{ rel: "canonical", href: "https://dnschecker.space/blacklist" }],
+   }),
+   component: BlacklistPage,
+ });
+diff --git a/src/routes/blog.tsx b/src/routes/blog.tsx
+index 60a33e3..e7e4219 100644
+--- a/src/routes/blog.tsx
++++ b/src/routes/blog.tsx
+@@ -16,13 +16,12 @@ export const Route = createFileRoute("/blog")({
+     meta: [
+       { title: "DNS, IP & SSL Intelligence Knowledge Base | DNSChecker Guides" },
+       { name: "description", content: "Comprehensive engineering tutorials on global DNS propagation, website to IP lookups, SSL certificate validation, malicious IP detection, and email security." },
+-      { name: "keywords", content: "dns check, website ip checker, ssl check, dns propagation check, email security check, port scanner, ip checker cmd, ip checker malicious, reverse ip lookup, what is my ip" },
+       { property: "og:title", content: "DNS, IP & SSL Intelligence Knowledge Base | DNSChecker" },
+       { property: "og:description", content: "In-depth network engineering guides, cybersecurity tutorials, and lookup diagnostics." },
+       { property: "og:url", content: "https://dnschecker.space/blog" },
+       { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" }
+     ],
+-    links: [{ rel: "canonical", href: "/blog" }],
++    links: [{ rel: "canonical", href: "https://dnschecker.space/blog" }],
+   }),
+   component: BlogPage,
+ });
+diff --git a/src/routes/dns.tsx b/src/routes/dns.tsx
+index c5d4ffe..8352175 100644
+--- a/src/routes/dns.tsx
++++ b/src/routes/dns.tsx
+@@ -12,12 +12,11 @@ export const Route = createFileRoute("/dns")({
+     meta: [
+       { title: "DNS Check & Global DNS Propagation Checker | DNSChecker" },
+       { name: "description", content: "Free online DNS check tool. Check global DNS records including A, AAAA, MX, NS, TXT, CNAME, SOA, and PTR reverse DNS. Test DNS propagation and verify server resolution." },
+-      { name: "keywords", content: "dns check, dns checker, check dns propagation, dns lookup, mx record check, txt record lookup, global dns check, reverse dns ptr" },
+       { property: "og:title", content: "DNS Check & Global DNS Propagation Checker" },
+       { property: "og:description", content: "Free global DNS check tool. Check A, AAAA, MX, NS, TXT, CNAME, SOA, and PTR reverse DNS." },
+       { property: "og:url", content: "https://dnschecker.space/dns" },
+     ],
+-    links: [{ rel: "canonical", href: "/dns" }],
++    links: [{ rel: "canonical", href: "https://dnschecker.space/dns" }],
+   }),
+   component: DnsPage,
+ });
+diff --git a/src/routes/email.tsx b/src/routes/email.tsx
+index 33ffde4..810234a 100644
+--- a/src/routes/email.tsx
++++ b/src/routes/email.tsx
+@@ -13,12 +13,11 @@ export const Route = createFileRoute("/email")({
+     meta: [
+       { title: "Email Security Checker — Verify MX, SPF & DMARC | DNSChecker" },
+       { name: "description", content: "Verify your domain's email infrastructure. Check mail exchange (MX) availability, sender policy framework (SPF), and DMARC configuration in real time." },
+-      { name: "keywords", content: "email security check, mx record check, check spf record, check dmarc record, email deliverability test, domain email setup, mail server test, avoid spam folder" },
+       { property: "og:title", content: "Email Security Checker — Verify MX, SPF & DMARC" },
+       { property: "og:description", content: "Verify MX, SPF, and DMARC records for domain email security." },
+       { property: "og:url", content: "https://dnschecker.space/email" },
+     ],
+-    links: [{ rel: "canonical", href: "/email" }],
++    links: [{ rel: "canonical", href: "https://dnschecker.space/email" }],
+   }),
+   component: EmailPage,
+ });
+diff --git a/src/routes/geo.tsx b/src/routes/geo.tsx
+index 51eadbd..ba6b79d 100644
+--- a/src/routes/geo.tsx
++++ b/src/routes/geo.tsx
+@@ -12,12 +12,11 @@ export const Route = createFileRoute("/geo")({
+     meta: [
+       { title: "IP Geolocation Lookup — Map Any IP Address to Location | DNSChecker" },
+       { name: "description", content: "Free IP Geolocation Lookup tool. Map any IP address or domain to country, region, city, postal code, and exact latitude/longitude coordinates on an interactive map." },
+-      { name: "keywords", content: "ip geolocation, ip map, locate ip on map, ip location lookup, ip coordinates, city level ip tracker, geoip lookup" },
+       { property: "og:title", content: "IP Geolocation Lookup — Map Any IP Address to Location" },
+       { property: "og:description", content: "Map any IP address or domain to country, region, city, and coordinates on an interactive map." },
+       { property: "og:url", content: "https://dnschecker.space/geo" },
+     ],
+-    links: [{ rel: "canonical", href: "/geo" }],
++    links: [{ rel: "canonical", href: "https://dnschecker.space/geo" }],
+   }),
+   component: GeoPage,
+ });
+diff --git a/src/routes/headers.tsx b/src/routes/headers.tsx
+index 0064c5d..47f0c7d 100644
+--- a/src/routes/headers.tsx
++++ b/src/routes/headers.tsx
+@@ -13,12 +13,11 @@ export const Route = createFileRoute("/headers")({
+     meta: [
+       { title: "HTTP Security Headers Inspector & Cyber Audit | DNSChecker" },
+       { name: "description", content: "Inspect incoming and outgoing HTTP request headers. Audit HSTS, Content-Security-Policy (CSP), X-Frame-Options, and client fingerprint data." },
+-      { name: "keywords", content: "http headers inspector, check security headers, hsts checker, csp checker, x-frame-options, user agent analyzer, cyber security header audit" },
+       { property: "og:title", content: "HTTP Security Headers Inspector & Cyber Audit" },
+       { property: "og:description", content: "Live inspection of HTTP security headers, User-Agent, and client fingerprint data." },
+       { property: "og:url", content: "https://dnschecker.space/headers" },
+     ],
+-    links: [{ rel: "canonical", href: "/headers" }],
++    links: [{ rel: "canonical", href: "https://dnschecker.space/headers" }],
+   }),
+   component: HeadersPage,
+ });
+diff --git a/src/routes/hosting.tsx b/src/routes/hosting.tsx
+index a91a16f..a62f01b 100644
+--- a/src/routes/hosting.tsx
++++ b/src/routes/hosting.tsx
+@@ -12,12 +12,11 @@ export const Route = createFileRoute("/hosting")({
+     meta: [
+       { title: "Website to IP Checker & Hosting Provider Lookup | DNSChecker" },
+       { name: "description", content: "Free website to IP checker. Find the server IP address, web hosting company, datacenter location, and ASN of any website instantly." },
+-      { name: "keywords", content: "website to ip, website ip checker, find website ip address, hosting checker, who hosts this website, website hosting lookup, server ip lookup, datacenter location" },
+       { property: "og:title", content: "Website to IP Checker & Hosting Provider Lookup" },
+       { property: "og:description", content: "Discover the hosting provider, server IP address, datacenter location, and ASN of any website." },
+       { property: "og:url", content: "https://dnschecker.space/hosting" },
+     ],
+-    links: [{ rel: "canonical", href: "/hosting" }],
++    links: [{ rel: "canonical", href: "https://dnschecker.space/hosting" }],
+   }),
+   component: HostingPage,
+ });
+diff --git a/src/routes/index.tsx b/src/routes/index.tsx
+index 2123e06..86bd299 100644
+--- a/src/routes/index.tsx
++++ b/src/routes/index.tsx
+@@ -23,7 +23,6 @@ export const Route = createFileRoute("/")({
+     meta: [
+       { title: "IP Checker & IP Address Lookup - Check Your Public IP Location" },
+       { name: "description", content: "Free IP Checker and IP Address Lookup tool. Instantly test your public IPv4/IPv6, PC local network IP, geolocation, ISP, blacklist status, and WebRTC leaks." },
+-      { name: "keywords", content: "ip checker, my ip checker, ip address lookup, what is my ip, ip location, check public ip, ip tracker, ip checker cmd, ip checker malicious, ip checker minecraft, ip checker blacklist, reverse ip lookup, dns checker" },
+       { name: "author", content: "DNSChecker Team" },
+       { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" },
+       { property: "og:title", content: "IP Checker & IP Address Lookup - Check Your Public IP Location" },
+@@ -34,7 +33,7 @@ export const Route = createFileRoute("/")({
+       { name: "twitter:title", content: "IP Checker & IP Address Lookup" },
+       { name: "twitter:description", content: "Free IP Checker and IP Address Lookup tool. Instantly test your public IPv4/IPv6, PC local IP, geolocation, and blacklist status." },
+     ],
+-    links: [{ rel: "canonical", href: "/" }],
++    links: [{ rel: "canonical", href: "https://dnschecker.space/" }],
+   }),
+   component: HomePage,
+ });
+diff --git a/src/routes/lookup.tsx b/src/routes/lookup.tsx
+index 3adfc3e..daec3d0 100644
+--- a/src/routes/lookup.tsx
++++ b/src/routes/lookup.tsx
+@@ -17,7 +17,7 @@ export const Route = createFileRoute("/lookup")({
+       { property: "og:description", content: "Instantly track the IP's city, country, latitude, and longitude data." },
+       { property: "og:url", content: "/lookup" },
+     ],
+-    links: [{ rel: "canonical", href: "/lookup" }],
++    links: [{ rel: "canonical", href: "https://dnschecker.space/lookup" }],
+   }),
+   component: LookupPage,
+ });
+diff --git a/src/routes/my-ip.tsx b/src/routes/my-ip.tsx
+index fb92e00..977c98d 100644
+--- a/src/routes/my-ip.tsx
++++ b/src/routes/my-ip.tsx
+@@ -28,12 +28,11 @@ export const Route = createFileRoute("/my-ip")({
+     meta: [
+       { title: "What Is My IP Address? - Check Your IP & Location | DNSChecker" },
+       { name: "description", content: "Find out what your public and local IP address is. Instantly check PC LAN IP, geolocation, ISP, WebRTC leak status, and browser fingerprint with our free IP tracker." },
+-      { name: "keywords", content: "what is my ip address, my ip checker, check ip, public ip address, pc local ip, webrtc leak test, ip location, ip tracker, my isp, free ip scanner, reverse ip lookup" },
+       { property: "og:title", content: "What Is My IP Address? - Check Your IP & Location" },
+       { property: "og:description", content: "Find out what your public and local IP address is. Instantly check PC LAN IP, geolocation, ISP, and WebRTC leak status." },
+       { property: "og:url", content: "https://dnschecker.space/my-ip" },
+     ],
+-    links: [{ rel: "canonical", href: "/my-ip" }],
++    links: [{ rel: "canonical", href: "https://dnschecker.space/my-ip" }],
+   }),
+   component: MyIpPage,
+ });
+diff --git a/src/routes/ports.tsx b/src/routes/ports.tsx
+index 4759951..be84116 100644
+--- a/src/routes/ports.tsx
++++ b/src/routes/ports.tsx
+@@ -13,12 +13,11 @@ export const Route = createFileRoute("/ports")({
+     meta: [
+       { title: "Port Scanner — Check Open Ports & Server Firewall Security | DNSChecker" },
+       { name: "description", content: "Free online port scanner. Probe common service ports (80, 443, 22, 21, 25, 3306, 8080) on any IP or domain to test firewall configuration and perimeter security." },
+-      { name: "keywords", content: "port scanner, check open ports, test open port, port 80 443 22, firewall port check, open port test, minecraft port test" },
+       { property: "og:title", content: "Port Scanner — Check Open Ports & Server Firewall Security" },
+       { property: "og:description", content: "Free online port scanner. Probe service ports on any IP or domain." },
+       { property: "og:url", content: "https://dnschecker.space/ports" },
+     ],
+-    links: [{ rel: "canonical", href: "/ports" }],
++    links: [{ rel: "canonical", href: "https://dnschecker.space/ports" }],
+   }),
+   component: PortsPage,
+ });
+diff --git a/src/routes/sitemap.tsx b/src/routes/sitemap.tsx
+index c3e2557..aa48b67 100644
+--- a/src/routes/sitemap.tsx
++++ b/src/routes/sitemap.tsx
+@@ -21,7 +21,7 @@ export const Route = createFileRoute("/sitemap")({
+       { title: "HTML Sitemap - DNSChecker" },
+       { name: "description", content: "Navigate through all the tools and features available on DNSChecker." },
+     ],
+-    links: [{ rel: "canonical", href: "/sitemap" }],
++    links: [{ rel: "canonical", href: "https://dnschecker.space/sitemap" }],
+   }),
+   component: SitemapPage,
+ });
+diff --git a/src/routes/sitemap[.]xml.ts b/src/routes/sitemap[.]xml.ts
+index 8d61ae8..3d341ee 100644
+--- a/src/routes/sitemap[.]xml.ts
++++ b/src/routes/sitemap[.]xml.ts
+@@ -1,20 +1,14 @@
+ import { createFileRoute } from "@tanstack/react-router";
+-import { getRequestHeaders } from "@tanstack/react-start/server";
++
++// Always use the canonical domain. Building sitemap URLs from the request
++// Host header lets www, preview and staging hosts leak into the sitemap,
++// which splits indexing signals across duplicates.
++const baseUrl = "https://dnschecker.space";
+ 
+ export const Route = createFileRoute("/sitemap.xml")({
+   server: {
+     handlers: {
+       GET: async () => {
+-        let domain = "dnschecker.space";
+-        try {
+-          const headers = getRequestHeaders() as Record<string, string>;
+-          const host = headers?.["x-forwarded-host"] || headers?.["host"];
+-          if (host && !host.includes("localhost") && !host.includes("127.0.0.1")) {
+-            domain = host;
+-          }
+-        } catch (e) {}
+-
+-        const baseUrl = `https://${domain}`;
+ 
+         const entries = [
+           { path: "/", priority: "1.0", changefreq: "daily" },
+diff --git a/src/routes/ssl.tsx b/src/routes/ssl.tsx
+index bbcf60f..7e49190 100644
+--- a/src/routes/ssl.tsx
++++ b/src/routes/ssl.tsx
+@@ -13,12 +13,11 @@ export const Route = createFileRoute("/ssl")({
+     meta: [
+       { title: "SSL Checker - Check SSL Certificate & Verify TLS Installation | DNSChecker" },
+       { name: "description", content: "Free SSL Checker and TLS verification tool. Verify certificate validity, intermediate CA chains, expiration dates, and protocol security in real time." },
+-      { name: "keywords", content: "ssl check, ssl checker, check ssl certificate, verify ssl installation, tls test, ssl certificate checker, ssl expiry check, ssl mixed content" },
+       { property: "og:title", content: "SSL Checker - Check SSL Certificate & Verify TLS Installation" },
+       { property: "og:description", content: "Free SSL Checker tool. Verify certificate validity, intermediate CA chains, and expiration dates." },
+       { property: "og:url", content: "https://dnschecker.space/ssl" },
+     ],
+-    links: [{ rel: "canonical", href: "/ssl" }],
++    links: [{ rel: "canonical", href: "https://dnschecker.space/ssl" }],
+   }),
+   component: SslPage,
+ });
+diff --git a/src/routes/tools.tsx b/src/routes/tools.tsx
+index ad2cfff..c9c006f 100644
+--- a/src/routes/tools.tsx
++++ b/src/routes/tools.tsx
+@@ -14,7 +14,7 @@ export const Route = createFileRoute("/tools")({
+       { title: "Network Tools — WHOIS, DNS, Ports, SSL | DNSChecker" },
+       { name: "description", content: "Ten production-grade lookups in one console — IP, DNS, WHOIS, SSL, security headers, blacklist, email, ports & geolocation." },
+     ],
+-    links: [{ rel: "canonical", href: "/tools" }],
++    links: [{ rel: "canonical", href: "https://dnschecker.space/tools" }],
+   }),
+   component: ToolsPage,
+ });
+diff --git a/src/routes/whois.tsx b/src/routes/whois.tsx
+index bb57063..74e2df2 100644
+--- a/src/routes/whois.tsx
++++ b/src/routes/whois.tsx
+@@ -17,7 +17,7 @@ export const Route = createFileRoute("/whois")({
+       { property: "og:description", content: "Instantly look up registration data, contact details, nameservers, and more for any domain name or IP address using WHOIS." },
+       { property: "og:url", content: "/whois" },
+     ],
+-    links: [{ rel: "canonical", href: "/whois" }],
++    links: [{ rel: "canonical", href: "https://dnschecker.space/whois" }],
+   }),
+   component: WhoisPage,
+ });

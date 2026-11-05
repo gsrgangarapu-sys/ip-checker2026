@@ -66,7 +66,7 @@ function ToolsPage() {
             </div>
             <h1 className="text-4xl sm:text-6xl font-black text-foreground mb-6 tracking-tight leading-[0.95]">
               Network <br />
-              <span className="bg-gradient-to-r from-[#00E5FF] to-[#00FF87] bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,229,255,0.3)]">intelligence toolkit</span>
+              <span className="bg-gradient-to-r from-[#00E5FF] to-[#00FF87] bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,229,255,0.3)]">intelligence toolkit tes</span>
             </h1>
             <p className="text-lg sm:text-xl text-[#94A3B8] leading-relaxed">
               Ten production-grade lookups in one console. Powered by live public registries.

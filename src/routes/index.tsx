@@ -112,8 +112,8 @@ function HomePage() {
             className="text-[38px] sm:text-[52px] lg:text-[72px] font-[800] text-foreground leading-[1.1] mb-8 tracking-tight"
           >
             Network &amp; security <br />
-            <span className="bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent drop-shadow-sm">intelligence toolkit</span>
-          </motion.h1>
+            <span className="bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent drop-shadow-sm">intelligence toolkit test</span>
+          </motion.h
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
