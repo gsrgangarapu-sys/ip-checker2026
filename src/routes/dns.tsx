@@ -12,12 +12,11 @@ export const Route = createFileRoute("/dns")({
     meta: [
       { title: "DNS Check & Global DNS Propagation Checker | DNSChecker" },
       { name: "description", content: "Free online DNS check tool. Check global DNS records including A, AAAA, MX, NS, TXT, CNAME, SOA, and PTR reverse DNS. Test DNS propagation and verify server resolution." },
-      { name: "keywords", content: "dns check, dns checker, check dns propagation, dns lookup, mx record check, txt record lookup, global dns check, reverse dns ptr" },
       { property: "og:title", content: "DNS Check & Global DNS Propagation Checker" },
       { property: "og:description", content: "Free global DNS check tool. Check A, AAAA, MX, NS, TXT, CNAME, SOA, and PTR reverse DNS." },
       { property: "og:url", content: "https://dnschecker.space/dns" },
     ],
-    links: [{ rel: "canonical", href: "/dns" }],
+    links: [{ rel: "canonical", href: "https://dnschecker.space/dns" }],
   }),
   component: DnsPage,
 });

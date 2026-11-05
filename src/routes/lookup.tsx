@@ -17,7 +17,7 @@ export const Route = createFileRoute("/lookup")({
       { property: "og:description", content: "Instantly track the IP's city, country, latitude, and longitude data." },
       { property: "og:url", content: "/lookup" },
     ],
-    links: [{ rel: "canonical", href: "/lookup" }],
+    links: [{ rel: "canonical", href: "https://dnschecker.space/lookup" }],
   }),
   component: LookupPage,
 });
