@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 // Always use the canonical domain. Building sitemap URLs from the request
 // Host header lets www, preview and staging hosts leak into the sitemap,
 // which splits indexing signals across duplicates.
-const baseUrl = "https://dnschecker.space";
+const baseUrl = "https://www.dnschecker.space";
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {

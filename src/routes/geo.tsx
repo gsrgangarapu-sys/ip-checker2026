@@ -14,9 +14,9 @@ export const Route = createFileRoute("/geo")({
       { name: "description", content: "Free IP Geolocation Lookup tool. Map any IP address or domain to country, region, city, postal code, and exact latitude/longitude coordinates on an interactive map." },
       { property: "og:title", content: "IP Geolocation Lookup — Map Any IP Address to Location" },
       { property: "og:description", content: "Map any IP address or domain to country, region, city, and coordinates on an interactive map." },
-      { property: "og:url", content: "https://dnschecker.space/geo" },
+      { property: "og:url", content: "https://www.dnschecker.space/geo" },
     ],
-    links: [{ rel: "canonical", href: "https://dnschecker.space/geo" }],
+    links: [{ rel: "canonical", href: "https://www.dnschecker.space/geo" }],
   }),
   component: GeoPage,
 });
@@ -61,12 +61,12 @@ function GeoPage() {
         title="IP Geolocation & Tracker — Map Any IP Address" 
         description="Track and map the exact geographical location of any IP or domain. Discover country, region, city, and GPS coordinates instantly." 
         keywords="ip geolocation, ip tracker, map ip address, locate ip, find ip location, track ip address, domain location, ip to country, ip to city"
-        url="https://dnschecker.space/geo"
+        url="https://www.dnschecker.space/geo"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "IP Geolocation Tracker",
-          "url": "https://dnschecker.space/geo",
+          "url": "https://www.dnschecker.space/geo",
           "description": "Track and map the geographical location of any IP or domain.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All"

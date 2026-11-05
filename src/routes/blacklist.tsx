@@ -15,9 +15,9 @@ export const Route = createFileRoute("/blacklist")({
       { name: "description", content: "Check if an IP address or domain is blacklisted or malicious. Test IP reputation against 50+ DNSBL anti-spam databases, Spamhaus, Barracuda, and threat feeds." },
       { property: "og:title", content: "IP Checker Malicious & Blacklist Check" },
       { property: "og:description", content: "Check if an IP address or domain is blacklisted or malicious. Test IP reputation against 50+ DNSBL databases." },
-      { property: "og:url", content: "https://dnschecker.space/blacklist" },
+      { property: "og:url", content: "https://www.dnschecker.space/blacklist" },
     ],
-    links: [{ rel: "canonical", href: "https://dnschecker.space/blacklist" }],
+    links: [{ rel: "canonical", href: "https://www.dnschecker.space/blacklist" }],
   }),
   component: BlacklistPage,
 });
@@ -70,7 +70,7 @@ function BlacklistPage() {
         title="IP Checker Malicious & Blacklist Check - Scan IP Reputation" 
         description="Check if an IP address or domain is blacklisted or malicious. Test IP reputation against 50+ DNSBL anti-spam databases, Spamhaus, Barracuda, and threat feeds." 
         keywords="ip checker malicious, ip checker blacklist, ip reputation check, check if ip is blacklisted, spamhaus lookup, mxtoolbox blacklist, dnsbl check, rbl check, email blacklist check"
-        url="https://dnschecker.space/blacklist"
+        url="https://www.dnschecker.space/blacklist"
       />
       <SiteHeader />
       

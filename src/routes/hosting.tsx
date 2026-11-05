@@ -14,9 +14,9 @@ export const Route = createFileRoute("/hosting")({
       { name: "description", content: "Free website to IP checker. Find the server IP address, web hosting company, datacenter location, and ASN of any website instantly." },
       { property: "og:title", content: "Website to IP Checker & Hosting Provider Lookup" },
       { property: "og:description", content: "Discover the hosting provider, server IP address, datacenter location, and ASN of any website." },
-      { property: "og:url", content: "https://dnschecker.space/hosting" },
+      { property: "og:url", content: "https://www.dnschecker.space/hosting" },
     ],
-    links: [{ rel: "canonical", href: "https://dnschecker.space/hosting" }],
+    links: [{ rel: "canonical", href: "https://www.dnschecker.space/hosting" }],
   }),
   component: HostingPage,
 });
@@ -61,7 +61,7 @@ function HostingPage() {
         title="Website to IP Checker &amp; Hosting Provider Lookup" 
         description="Free website to IP checker. Find the server IP address, web hosting company, datacenter location, and ASN of any website instantly." 
         keywords="website to ip, website ip checker, find website ip address, hosting checker, who hosts this website, website hosting lookup, server ip lookup, datacenter location"
-        url="https://dnschecker.space/hosting"
+        url="https://www.dnschecker.space/hosting"
       />
       <SiteHeader />
       

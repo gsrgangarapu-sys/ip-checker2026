@@ -17,7 +17,7 @@ export const Route = createFileRoute("/lookup")({
       { property: "og:description", content: "Instantly track the IP's city, country, latitude, and longitude data." },
       { property: "og:url", content: "/lookup" },
     ],
-    links: [{ rel: "canonical", href: "https://dnschecker.space/lookup" }],
+    links: [{ rel: "canonical", href: "https://www.dnschecker.space/lookup" }],
   }),
   component: LookupPage,
 });
@@ -54,7 +54,7 @@ function LookupPage() {
         title="IP Address Lookup - Trace, Track &amp; Locate an IP Instantly" 
         description="Lookup details about any IP address including location, ISP, hostname, proxy, and blacklist status. Instantly track the IP's city, country, latitude, and longitude." 
         keywords="ip address lookup, trace ip, track ip, locate ip, check ip location, ip geolocation tracker, ip location finder, free ip lookup, reverse ip lookup, opentracker"
-        url="https://dnschecker.space/lookup"
+        url="https://www.dnschecker.space/lookup"
       />
       <SiteHeader />
       

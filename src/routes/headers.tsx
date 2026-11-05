@@ -15,9 +15,9 @@ export const Route = createFileRoute("/headers")({
       { name: "description", content: "Inspect incoming and outgoing HTTP request headers. Audit HSTS, Content-Security-Policy (CSP), X-Frame-Options, and client fingerprint data." },
       { property: "og:title", content: "HTTP Security Headers Inspector & Cyber Audit" },
       { property: "og:description", content: "Live inspection of HTTP security headers, User-Agent, and client fingerprint data." },
-      { property: "og:url", content: "https://dnschecker.space/headers" },
+      { property: "og:url", content: "https://www.dnschecker.space/headers" },
     ],
-    links: [{ rel: "canonical", href: "https://dnschecker.space/headers" }],
+    links: [{ rel: "canonical", href: "https://www.dnschecker.space/headers" }],
   }),
   component: HeadersPage,
 });
@@ -57,12 +57,12 @@ function HeadersPage() {
         title="HTTP Headers Inspector — See Your Request Headers | IP Guardian" 
         description="Inspect every HTTP header your browser sends to a server. Check User-Agent, Accept, language preferences, forwarded IP, and security indicators." 
         keywords="http headers inspector, view request headers, check http headers, my user agent, inspect headers, http request viewer, browser headers"
-        url="https://dnschecker.space/headers"
+        url="https://www.dnschecker.space/headers"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "HTTP Headers Inspector",
-          "url": "https://dnschecker.space/headers",
+          "url": "https://www.dnschecker.space/headers",
           "description": "Inspect HTTP headers sent by your browser.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All"

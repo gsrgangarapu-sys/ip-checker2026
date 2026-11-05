@@ -17,7 +17,7 @@ export const Route = createFileRoute("/whois")({
       { property: "og:description", content: "Instantly look up registration data, contact details, nameservers, and more for any domain name or IP address using WHOIS." },
       { property: "og:url", content: "/whois" },
     ],
-    links: [{ rel: "canonical", href: "https://dnschecker.space/whois" }],
+    links: [{ rel: "canonical", href: "https://www.dnschecker.space/whois" }],
   }),
   component: WhoisPage,
 });
@@ -76,12 +76,12 @@ function WhoisPage() {
         title="WHOIS Domain Lookup & IP Search - Find Out Who Owns a Domain" 
         description="Use our WHOIS domain lookup tool to trace the ownership of a domain name or IP address. Find registration details, contact info, nameservers, and expiry dates." 
         keywords="whois, whois ip, whois domain owner, domain status checker, check domain expiry, find domain registration details, whois record, whois domain tool, check domain owner"
-        url="https://dnschecker.space/whois"
+        url="https://www.dnschecker.space/whois"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "WHOIS Lookup Tool",
-          "url": "https://dnschecker.space/whois",
+          "url": "https://www.dnschecker.space/whois",
           "description": "Find domain and IP registration details instantly.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All"

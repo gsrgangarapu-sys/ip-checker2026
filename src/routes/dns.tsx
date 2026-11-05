@@ -14,9 +14,9 @@ export const Route = createFileRoute("/dns")({
       { name: "description", content: "Free online DNS check tool. Check global DNS records including A, AAAA, MX, NS, TXT, CNAME, SOA, and PTR reverse DNS. Test DNS propagation and verify server resolution." },
       { property: "og:title", content: "DNS Check & Global DNS Propagation Checker" },
       { property: "og:description", content: "Free global DNS check tool. Check A, AAAA, MX, NS, TXT, CNAME, SOA, and PTR reverse DNS." },
-      { property: "og:url", content: "https://dnschecker.space/dns" },
+      { property: "og:url", content: "https://www.dnschecker.space/dns" },
     ],
-    links: [{ rel: "canonical", href: "https://dnschecker.space/dns" }],
+    links: [{ rel: "canonical", href: "https://www.dnschecker.space/dns" }],
   }),
   component: DnsPage,
 });
@@ -75,7 +75,7 @@ function DnsPage() {
         title="DNS Check &amp; Global DNS Propagation Checker" 
         description="Free online DNS check tool. Check global DNS records including A, AAAA, MX, NS, TXT, CNAME, SOA, and PTR reverse DNS. Test DNS propagation and verify server resolution." 
         keywords="dns check, dns checker, check dns propagation, dns lookup, mx record check, txt record lookup, global dns check, reverse dns ptr"
-        url="https://dnschecker.space/dns"
+        url="https://www.dnschecker.space/dns"
       />
       <SiteHeader />
       

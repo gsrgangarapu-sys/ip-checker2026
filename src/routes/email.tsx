@@ -15,9 +15,9 @@ export const Route = createFileRoute("/email")({
       { name: "description", content: "Verify your domain's email infrastructure. Check mail exchange (MX) availability, sender policy framework (SPF), and DMARC configuration in real time." },
       { property: "og:title", content: "Email Security Checker — Verify MX, SPF & DMARC" },
       { property: "og:description", content: "Verify MX, SPF, and DMARC records for domain email security." },
-      { property: "og:url", content: "https://dnschecker.space/email" },
+      { property: "og:url", content: "https://www.dnschecker.space/email" },
     ],
-    links: [{ rel: "canonical", href: "https://dnschecker.space/email" }],
+    links: [{ rel: "canonical", href: "https://www.dnschecker.space/email" }],
   }),
   component: EmailPage,
 });
@@ -70,12 +70,12 @@ function EmailPage() {
         title="Email Security Checker — Verify MX, SPF & DMARC" 
         description="Verify your domain's email infrastructure. Check mail exchange (MX) availability, sender policy framework (SPF), and DMARC configuration." 
         keywords="email security check, mx record check, check spf record, check dmarc record, email deliverability test, domain email setup, mail server test"
-        url="https://dnschecker.space/email"
+        url="https://www.dnschecker.space/email"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "Email Security Checker",
-          "url": "https://dnschecker.space/email",
+          "url": "https://www.dnschecker.space/email",
           "description": "Verify MX, TXT, and DMARC records for domain email security.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All"

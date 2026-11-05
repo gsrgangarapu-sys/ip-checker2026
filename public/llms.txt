@@ -1,0 +1,23 @@
+# DNSChecker (dnschecker.space)
+
+> Free online DNS checker and network intelligence toolkit. Check DNS records, IP addresses, WHOIS, SSL certificates, email deliverability (SPF, DKIM, DMARC, MX), DNS blacklists, open ports, security headers, and hosting details for any domain or IP address — no sign-up required.
+
+## Tools
+
+- [DNS Checker](https://www.dnschecker.space/dns): Look up A, AAAA, MX, NS, TXT, SOA, CNAME, CAA, and PTR records for any domain using DNS-over-HTTPS resolvers (Cloudflare, Google, Quad9, AdGuard).
+- [What's My IP](https://www.dnschecker.space/my-ip): See your public IPv4 and IPv6 address, ISP, ASN, approximate location, timezone, and WebRTC/local IP details.
+- [IP Address Lookup](https://www.dnschecker.space/lookup): Full intelligence dossier for any IP or domain — geolocation, ASN and organization, proxy/VPN detection signals, WHOIS, SSL, DNS, and open ports.
+- [WHOIS Lookup](https://www.dnschecker.space/whois): Domain registration details — registrar, creation and expiry dates, nameservers, and domain status.
+- [SSL Checker](https://www.dnschecker.space/ssl): Inspect a site's SSL/TLS certificate — issuer, validity dates, protocol versions, and cipher suites.
+- [Blacklist Checker](https://www.dnschecker.space/blacklist): Check whether an IP or domain appears on major DNS blacklists (DNSBL) used for spam and abuse filtering.
+- [Email Diagnostics](https://www.dnschecker.space/email): Test email setup — MX records, SPF, DKIM, DMARC, and blacklist status for a domain.
+- [IP Geolocation](https://www.dnschecker.space/geo): Locate an IP address on a map with country, city, coordinates, ISP, and ASN data.
+- [Security Headers Checker](https://www.dnschecker.space/headers): Analyze a website's HTTP security headers and get a security grade with fix guidance.
+- [Hosting Checker](https://www.dnschecker.space/hosting): Find who hosts a website — hosting provider, server IP, ASN, nameservers, and SSL details.
+- [Port Scanner](https://www.dnschecker.space/ports): Check whether common TCP ports are open on a host, with risk guidance for each port.
+- [All Tools](https://www.dnschecker.space/tools): Full list of DNSChecker tools.
+
+## Notes
+
+- All lookups run over encrypted DNS-over-HTTPS (DoH); queries are not logged or sold.
+- The toolkit is free for personal and professional use.

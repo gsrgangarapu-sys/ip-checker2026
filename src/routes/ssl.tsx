@@ -15,9 +15,9 @@ export const Route = createFileRoute("/ssl")({
       { name: "description", content: "Free SSL Checker and TLS verification tool. Verify certificate validity, intermediate CA chains, expiration dates, and protocol security in real time." },
       { property: "og:title", content: "SSL Checker - Check SSL Certificate & Verify TLS Installation" },
       { property: "og:description", content: "Free SSL Checker tool. Verify certificate validity, intermediate CA chains, and expiration dates." },
-      { property: "og:url", content: "https://dnschecker.space/ssl" },
+      { property: "og:url", content: "https://www.dnschecker.space/ssl" },
     ],
-    links: [{ rel: "canonical", href: "https://dnschecker.space/ssl" }],
+    links: [{ rel: "canonical", href: "https://www.dnschecker.space/ssl" }],
   }),
   component: SslPage,
 });
@@ -70,12 +70,12 @@ function SslPage() {
         title="SSL Checker - Check SSL Certificate & Verify Installation" 
         description="Use our fast SSL Checker to quickly diagnose problems with your SSL certificate installation. Verify certificate validity, issuer details, and expiration dates." 
         keywords="ssl checker, check ssl certificate, ssl decoder, free ssl checker, ssl certificate checker, ssl validation, check https security, ssl server test"
-        url="https://dnschecker.space/ssl"
+        url="https://www.dnschecker.space/ssl"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "SSL Certificate Checker",
-          "url": "https://dnschecker.space/ssl",
+          "url": "https://www.dnschecker.space/ssl",
           "description": "Verify TLS/SSL certificate validity, issuers, and protocols.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All"
