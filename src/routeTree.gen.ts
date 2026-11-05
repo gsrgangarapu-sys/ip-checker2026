@@ -9,91 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WhoisRouteImport } from './routes/whois'
-import { Route as ToolsRouteImport } from './routes/tools'
-import { Route as SslRouteImport } from './routes/ssl'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as SitemapRouteImport } from './routes/sitemap'
-import { Route as PortsRouteImport } from './routes/ports'
-import { Route as MyIpRouteImport } from './routes/my-ip'
-import { Route as LookupRouteImport } from './routes/lookup'
-import { Route as HostingRouteImport } from './routes/hosting'
-import { Route as HeadersRouteImport } from './routes/headers'
-import { Route as GeoRouteImport } from './routes/geo'
-import { Route as EmailRouteImport } from './routes/email'
-import { Route as DnsRouteImport } from './routes/dns'
-import { Route as BlogRouteImport } from './routes/blog'
-import { Route as BlacklistRouteImport } from './routes/blacklist'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlacklistRouteImport } from './routes/blacklist'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as DnsRouteImport } from './routes/dns'
+import { Route as EmailRouteImport } from './routes/email'
+import { Route as GeoRouteImport } from './routes/geo'
+import { Route as HeadersRouteImport } from './routes/headers'
+import { Route as HostingRouteImport } from './routes/hosting'
+import { Route as LookupRouteImport } from './routes/lookup'
+import { Route as MyIpRouteImport } from './routes/my-ip'
+import { Route as PortsRouteImport } from './routes/ports'
+import { Route as SitemapRouteImport } from './routes/sitemap'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SslRouteImport } from './routes/ssl'
+import { Route as ToolsRouteImport } from './routes/tools'
+import { Route as WhoisRouteImport } from './routes/whois'
 
-const WhoisRoute = WhoisRouteImport.update({
-  id: '/whois',
-  path: '/whois',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ToolsRoute = ToolsRouteImport.update({
-  id: '/tools',
-  path: '/tools',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SslRoute = SslRouteImport.update({
-  id: '/ssl',
-  path: '/ssl',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapRoute = SitemapRouteImport.update({
-  id: '/sitemap',
-  path: '/sitemap',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PortsRoute = PortsRouteImport.update({
-  id: '/ports',
-  path: '/ports',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MyIpRoute = MyIpRouteImport.update({
-  id: '/my-ip',
-  path: '/my-ip',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LookupRoute = LookupRouteImport.update({
-  id: '/lookup',
-  path: '/lookup',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HostingRoute = HostingRouteImport.update({
-  id: '/hosting',
-  path: '/hosting',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HeadersRoute = HeadersRouteImport.update({
-  id: '/headers',
-  path: '/headers',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GeoRoute = GeoRouteImport.update({
-  id: '/geo',
-  path: '/geo',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EmailRoute = EmailRouteImport.update({
-  id: '/email',
-  path: '/email',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DnsRoute = DnsRouteImport.update({
-  id: '/dns',
-  path: '/dns',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlacklistRoute = BlacklistRouteImport.update({
@@ -101,9 +36,74 @@ const BlacklistRoute = BlacklistRouteImport.update({
   path: '/blacklist',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DnsRoute = DnsRouteImport.update({
+  id: '/dns',
+  path: '/dns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmailRoute = EmailRouteImport.update({
+  id: '/email',
+  path: '/email',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GeoRoute = GeoRouteImport.update({
+  id: '/geo',
+  path: '/geo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HeadersRoute = HeadersRouteImport.update({
+  id: '/headers',
+  path: '/headers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HostingRoute = HostingRouteImport.update({
+  id: '/hosting',
+  path: '/hosting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LookupRoute = LookupRouteImport.update({
+  id: '/lookup',
+  path: '/lookup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MyIpRoute = MyIpRouteImport.update({
+  id: '/my-ip',
+  path: '/my-ip',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortsRoute = PortsRouteImport.update({
+  id: '/ports',
+  path: '/ports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapRoute = SitemapRouteImport.update({
+  id: '/sitemap',
+  path: '/sitemap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SslRoute = SslRouteImport.update({
+  id: '/ssl',
+  path: '/ssl',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsRoute = ToolsRouteImport.update({
+  id: '/tools',
+  path: '/tools',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhoisRoute = WhoisRouteImport.update({
+  id: '/whois',
+  path: '/whois',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -240,102 +240,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/whois': {
-      id: '/whois'
-      path: '/whois'
-      fullPath: '/whois'
-      preLoaderRoute: typeof WhoisRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tools': {
-      id: '/tools'
-      path: '/tools'
-      fullPath: '/tools'
-      preLoaderRoute: typeof ToolsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ssl': {
-      id: '/ssl'
-      path: '/ssl'
-      fullPath: '/ssl'
-      preLoaderRoute: typeof SslRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap': {
-      id: '/sitemap'
-      path: '/sitemap'
-      fullPath: '/sitemap'
-      preLoaderRoute: typeof SitemapRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ports': {
-      id: '/ports'
-      path: '/ports'
-      fullPath: '/ports'
-      preLoaderRoute: typeof PortsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/my-ip': {
-      id: '/my-ip'
-      path: '/my-ip'
-      fullPath: '/my-ip'
-      preLoaderRoute: typeof MyIpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lookup': {
-      id: '/lookup'
-      path: '/lookup'
-      fullPath: '/lookup'
-      preLoaderRoute: typeof LookupRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/hosting': {
-      id: '/hosting'
-      path: '/hosting'
-      fullPath: '/hosting'
-      preLoaderRoute: typeof HostingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/headers': {
-      id: '/headers'
-      path: '/headers'
-      fullPath: '/headers'
-      preLoaderRoute: typeof HeadersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/geo': {
-      id: '/geo'
-      path: '/geo'
-      fullPath: '/geo'
-      preLoaderRoute: typeof GeoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/email': {
-      id: '/email'
-      path: '/email'
-      fullPath: '/email'
-      preLoaderRoute: typeof EmailRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dns': {
-      id: '/dns'
-      path: '/dns'
-      fullPath: '/dns'
-      preLoaderRoute: typeof DnsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blacklist': {
@@ -345,11 +254,102 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlacklistRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dns': {
+      id: '/dns'
+      path: '/dns'
+      fullPath: '/dns'
+      preLoaderRoute: typeof DnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/email': {
+      id: '/email'
+      path: '/email'
+      fullPath: '/email'
+      preLoaderRoute: typeof EmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/geo': {
+      id: '/geo'
+      path: '/geo'
+      fullPath: '/geo'
+      preLoaderRoute: typeof GeoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/headers': {
+      id: '/headers'
+      path: '/headers'
+      fullPath: '/headers'
+      preLoaderRoute: typeof HeadersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hosting': {
+      id: '/hosting'
+      path: '/hosting'
+      fullPath: '/hosting'
+      preLoaderRoute: typeof HostingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lookup': {
+      id: '/lookup'
+      path: '/lookup'
+      fullPath: '/lookup'
+      preLoaderRoute: typeof LookupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/my-ip': {
+      id: '/my-ip'
+      path: '/my-ip'
+      fullPath: '/my-ip'
+      preLoaderRoute: typeof MyIpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ports': {
+      id: '/ports'
+      path: '/ports'
+      fullPath: '/ports'
+      preLoaderRoute: typeof PortsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap': {
+      id: '/sitemap'
+      path: '/sitemap'
+      fullPath: '/sitemap'
+      preLoaderRoute: typeof SitemapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ssl': {
+      id: '/ssl'
+      path: '/ssl'
+      fullPath: '/ssl'
+      preLoaderRoute: typeof SslRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools': {
+      id: '/tools'
+      path: '/tools'
+      fullPath: '/tools'
+      preLoaderRoute: typeof ToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/whois': {
+      id: '/whois'
+      path: '/whois'
+      fullPath: '/whois'
+      preLoaderRoute: typeof WhoisRouteImport
       parentRoute: typeof rootRouteImport
     }
   }

@@ -15,9 +15,9 @@ export const Route = createFileRoute("/ports")({
       { name: "description", content: "Free online port scanner. Probe common service ports (80, 443, 22, 21, 25, 3306, 8080) on any IP or domain to test firewall configuration and perimeter security." },
       { property: "og:title", content: "Port Scanner — Check Open Ports & Server Firewall Security" },
       { property: "og:description", content: "Free online port scanner. Probe service ports on any IP or domain." },
-      { property: "og:url", content: "https://dnschecker.space/ports" },
+      { property: "og:url", content: "https://www.dnschecker.space/ports" },
     ],
-    links: [{ rel: "canonical", href: "https://dnschecker.space/ports" }],
+    links: [{ rel: "canonical", href: "https://www.dnschecker.space/ports" }],
   }),
   component: PortsPage,
 });
@@ -70,12 +70,12 @@ function PortsPage() {
         title="Open Port Scanner — Test TCP/UDP Network Security" 
         description="Scan common network ports (21, 22, 80, 443, etc.) to check network security, firewalls, and exposed infrastructure. Fast and accurate TCP port scanner." 
         keywords="port scanner, open port check, test open ports, network port scanner, tcp port check, firewall test, exposed ports, nmap alternative online"
-        url="https://dnschecker.space/ports"
+        url="https://www.dnschecker.space/ports"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
           "name": "Open Port Scanner",
-          "url": "https://dnschecker.space/ports",
+          "url": "https://www.dnschecker.space/ports",
           "description": "Scan common ports to check network security and firewalls.",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "All"

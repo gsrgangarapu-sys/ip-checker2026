@@ -21,7 +21,7 @@ export const Route = createFileRoute("/sitemap")({
       { title: "HTML Sitemap - DNSChecker" },
       { name: "description", content: "Navigate through all the tools and features available on DNSChecker." },
     ],
-    links: [{ rel: "canonical", href: "https://dnschecker.space/sitemap" }],
+    links: [{ rel: "canonical", href: "https://www.dnschecker.space/sitemap" }],
   }),
   component: SitemapPage,
 });
@@ -47,7 +47,7 @@ function SitemapPage() {
         title="HTML Sitemap - DNSChecker" 
         description="Navigate through all the tools and features available on DNSChecker. Discover our comprehensive network intelligence and security toolkit." 
         keywords="sitemap, html sitemap, dnschecker sitemap, site index"
-        url="https://dnschecker.space/sitemap"
+        url="https://www.dnschecker.space/sitemap"
       />
       <SiteHeader />
       

@@ -18,10 +18,10 @@ export const Route = createFileRoute("/blog")({
       { name: "description", content: "Comprehensive engineering tutorials on global DNS propagation, website to IP lookups, SSL certificate validation, malicious IP detection, and email security." },
       { property: "og:title", content: "DNS, IP & SSL Intelligence Knowledge Base | DNSChecker" },
       { property: "og:description", content: "In-depth network engineering guides, cybersecurity tutorials, and lookup diagnostics." },
-      { property: "og:url", content: "https://dnschecker.space/blog" },
+      { property: "og:url", content: "https://www.dnschecker.space/blog" },
       { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" }
     ],
-    links: [{ rel: "canonical", href: "https://dnschecker.space/blog" }],
+    links: [{ rel: "canonical", href: "https://www.dnschecker.space/blog" }],
   }),
   component: BlogPage,
 });
@@ -674,19 +674,19 @@ export function BlogPage() {
     "author": {
       "@type": "Organization",
       "name": activeArticle.author,
-      "url": "https://dnschecker.space"
+      "url": "https://www.dnschecker.space"
     },
     "publisher": {
       "@type": "Organization",
       "name": "DNSChecker",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://dnschecker.space/favicon.ico"
+        "url": "https://www.dnschecker.space/favicon.ico"
       }
     },
     "datePublished": "2026-10-22",
     "dateModified": "2026-10-23",
-    "mainEntityOfPage": `https://dnschecker.space/blog#${activeArticle.id}`,
+    "mainEntityOfPage": `https://www.dnschecker.space/blog#${activeArticle.id}`,
     "keywords": activeArticle.tags.join(", ")
   };
 
@@ -696,7 +696,7 @@ export function BlogPage() {
         title="DNS, IP & SSL Intelligence Knowledge Base | DNSChecker Guides" 
         description="Comprehensive engineering tutorials on global DNS propagation, website to IP lookups, SSL certificate validation, malicious IP detection, and email security." 
         keywords="dns check, website ip checker, ssl check, dns propagation check, email security check, port scanner, ip checker cmd, ip checker malicious, reverse ip lookup, what is my ip"
-        url="https://dnschecker.space/blog"
+        url="https://www.dnschecker.space/blog"
         schema={articleJsonLd}
       />
       <SiteHeader />

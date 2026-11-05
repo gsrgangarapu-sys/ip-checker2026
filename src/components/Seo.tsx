@@ -25,7 +25,7 @@ interface SeoProps {
 export function Seo({
   title = "DNSChecker — Free IP Checker & Network Intelligence Tools",
   description = "Instantly check your public IPv4/IPv6, PC local network IP, geolocation, ISP, DNS, SSL, and security reputation with our free IP checker toolkit.",
-  url = "https://dnschecker.space",
+  url = "https://www.dnschecker.space",
   faqs,
   schema
 }: SeoProps) {
