@@ -1,0 +1,1439 @@
+diff --git a/src/components/SiteFooter.tsx b/src/components/SiteFooter.tsx
+index b33203c..224a3e7 100644
+--- a/src/components/SiteFooter.tsx
++++ b/src/components/SiteFooter.tsx
+@@ -11,6 +11,10 @@ export function SiteFooter() {
+           <div className="mt-4 flex justify-center gap-6">
+             <Link to="/blog" className="text-[14px] text-slate-400 hover:text-emerald-600 transition-colors">Blog &amp; Tutorials</Link>
+             <Link to="/sitemap" className="text-[14px] text-slate-400 hover:text-emerald-600 transition-colors">HTML Sitemap</Link>
++            <Link to="/about" className="text-[14px] text-slate-400 hover:text-emerald-600 transition-colors">About</Link>
++            <Link to="/dns-propagation-checker" className="text-[14px] text-slate-400 hover:text-emerald-600 transition-colors">DNS Propagation Checker</Link>
++            <Link to="/mx-lookup" className="text-[14px] text-slate-400 hover:text-emerald-600 transition-colors">MX Lookup</Link>
++            <Link to="/spf-checker" className="text-[14px] text-slate-400 hover:text-emerald-600 transition-colors">SPF Checker</Link>
+           </div>
+         </div>
+       </div>
+diff --git a/src/routeTree.gen.ts b/src/routeTree.gen.ts
+index 5fc2c6d..1214e5d 100644
+--- a/src/routeTree.gen.ts
++++ b/src/routeTree.gen.ts
+@@ -10,18 +10,22 @@
+ 
+ import { Route as rootRouteImport } from './routes/__root'
+ import { Route as IndexRouteImport } from './routes/index'
++import { Route as AboutRouteImport } from './routes/about'
+ import { Route as BlacklistRouteImport } from './routes/blacklist'
+ import { Route as BlogRouteImport } from './routes/blog'
+ import { Route as DnsRouteImport } from './routes/dns'
++import { Route as DnsPropagationCheckerRouteImport } from './routes/dns-propagation-checker'
+ import { Route as EmailRouteImport } from './routes/email'
+ import { Route as GeoRouteImport } from './routes/geo'
+ import { Route as HeadersRouteImport } from './routes/headers'
+ import { Route as HostingRouteImport } from './routes/hosting'
+ import { Route as LookupRouteImport } from './routes/lookup'
++import { Route as MxLookupRouteImport } from './routes/mx-lookup'
+ import { Route as MyIpRouteImport } from './routes/my-ip'
+ import { Route as PortsRouteImport } from './routes/ports'
+ import { Route as SitemapRouteImport } from './routes/sitemap'
+ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
++import { Route as SpfCheckerRouteImport } from './routes/spf-checker'
+ import { Route as SslRouteImport } from './routes/ssl'
+ import { Route as ToolsRouteImport } from './routes/tools'
+ import { Route as WhoisRouteImport } from './routes/whois'
+@@ -31,6 +35,11 @@ const IndexRoute = IndexRouteImport.update({
+   path: '/',
+   getParentRoute: () => rootRouteImport,
+ } as any)
++const AboutRoute = AboutRouteImport.update({
++  id: '/about',
++  path: '/about',
++  getParentRoute: () => rootRouteImport,
++} as any)
+ const BlacklistRoute = BlacklistRouteImport.update({
+   id: '/blacklist',
+   path: '/blacklist',
+@@ -46,6 +55,11 @@ const DnsRoute = DnsRouteImport.update({
+   path: '/dns',
+   getParentRoute: () => rootRouteImport,
+ } as any)
++const DnsPropagationCheckerRoute = DnsPropagationCheckerRouteImport.update({
++  id: '/dns-propagation-checker',
++  path: '/dns-propagation-checker',
++  getParentRoute: () => rootRouteImport,
++} as any)
+ const EmailRoute = EmailRouteImport.update({
+   id: '/email',
+   path: '/email',
+@@ -71,6 +85,11 @@ const LookupRoute = LookupRouteImport.update({
+   path: '/lookup',
+   getParentRoute: () => rootRouteImport,
+ } as any)
++const MxLookupRoute = MxLookupRouteImport.update({
++  id: '/mx-lookup',
++  path: '/mx-lookup',
++  getParentRoute: () => rootRouteImport,
++} as any)
+ const MyIpRoute = MyIpRouteImport.update({
+   id: '/my-ip',
+   path: '/my-ip',
+@@ -91,6 +110,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+   path: '/sitemap.xml',
+   getParentRoute: () => rootRouteImport,
+ } as any)
++const SpfCheckerRoute = SpfCheckerRouteImport.update({
++  id: '/spf-checker',
++  path: '/spf-checker',
++  getParentRoute: () => rootRouteImport,
++} as any)
+ const SslRoute = SslRouteImport.update({
+   id: '/ssl',
+   path: '/ssl',
+@@ -109,36 +133,44 @@ const WhoisRoute = WhoisRouteImport.update({
+ 
+ export interface FileRoutesByFullPath {
+   '/': typeof IndexRoute
++  '/about': typeof AboutRoute
+   '/blacklist': typeof BlacklistRoute
+   '/blog': typeof BlogRoute
+   '/dns': typeof DnsRoute
++  '/dns-propagation-checker': typeof DnsPropagationCheckerRoute
+   '/email': typeof EmailRoute
+   '/geo': typeof GeoRoute
+   '/headers': typeof HeadersRoute
+   '/hosting': typeof HostingRoute
+   '/lookup': typeof LookupRoute
++  '/mx-lookup': typeof MxLookupRoute
+   '/my-ip': typeof MyIpRoute
+   '/ports': typeof PortsRoute
+   '/sitemap': typeof SitemapRoute
+   '/sitemap.xml': typeof SitemapDotxmlRoute
++  '/spf-checker': typeof SpfCheckerRoute
+   '/ssl': typeof SslRoute
+   '/tools': typeof ToolsRoute
+   '/whois': typeof WhoisRoute
+ }
+ export interface FileRoutesByTo {
+   '/': typeof IndexRoute
++  '/about': typeof AboutRoute
+   '/blacklist': typeof BlacklistRoute
+   '/blog': typeof BlogRoute
+   '/dns': typeof DnsRoute
++  '/dns-propagation-checker': typeof DnsPropagationCheckerRoute
+   '/email': typeof EmailRoute
+   '/geo': typeof GeoRoute
+   '/headers': typeof HeadersRoute
+   '/hosting': typeof HostingRoute
+   '/lookup': typeof LookupRoute
++  '/mx-lookup': typeof MxLookupRoute
+   '/my-ip': typeof MyIpRoute
+   '/ports': typeof PortsRoute
+   '/sitemap': typeof SitemapRoute
+   '/sitemap.xml': typeof SitemapDotxmlRoute
++  '/spf-checker': typeof SpfCheckerRoute
+   '/ssl': typeof SslRoute
+   '/tools': typeof ToolsRoute
+   '/whois': typeof WhoisRoute
+@@ -146,18 +178,22 @@ export interface FileRoutesByTo {
+ export interface FileRoutesById {
+   __root__: typeof rootRouteImport
+   '/': typeof IndexRoute
++  '/about': typeof AboutRoute
+   '/blacklist': typeof BlacklistRoute
+   '/blog': typeof BlogRoute
+   '/dns': typeof DnsRoute
++  '/dns-propagation-checker': typeof DnsPropagationCheckerRoute
+   '/email': typeof EmailRoute
+   '/geo': typeof GeoRoute
+   '/headers': typeof HeadersRoute
+   '/hosting': typeof HostingRoute
+   '/lookup': typeof LookupRoute
++  '/mx-lookup': typeof MxLookupRoute
+   '/my-ip': typeof MyIpRoute
+   '/ports': typeof PortsRoute
+   '/sitemap': typeof SitemapRoute
+   '/sitemap.xml': typeof SitemapDotxmlRoute
++  '/spf-checker': typeof SpfCheckerRoute
+   '/ssl': typeof SslRoute
+   '/tools': typeof ToolsRoute
+   '/whois': typeof WhoisRoute
+@@ -166,54 +202,66 @@ export interface FileRouteTypes {
+   fileRoutesByFullPath: FileRoutesByFullPath
+   fullPaths:
+     | '/'
++    | '/about'
+     | '/blacklist'
+     | '/blog'
+     | '/dns'
++    | '/dns-propagation-checker'
+     | '/email'
+     | '/geo'
+     | '/headers'
+     | '/hosting'
+     | '/lookup'
++    | '/mx-lookup'
+     | '/my-ip'
+     | '/ports'
+     | '/sitemap'
+     | '/sitemap.xml'
++    | '/spf-checker'
+     | '/ssl'
+     | '/tools'
+     | '/whois'
+   fileRoutesByTo: FileRoutesByTo
+   to:
+     | '/'
++    | '/about'
+     | '/blacklist'
+     | '/blog'
+     | '/dns'
++    | '/dns-propagation-checker'
+     | '/email'
+     | '/geo'
+     | '/headers'
+     | '/hosting'
+     | '/lookup'
++    | '/mx-lookup'
+     | '/my-ip'
+     | '/ports'
+     | '/sitemap'
+     | '/sitemap.xml'
++    | '/spf-checker'
+     | '/ssl'
+     | '/tools'
+     | '/whois'
+   id:
+     | '__root__'
+     | '/'
++    | '/about'
+     | '/blacklist'
+     | '/blog'
+     | '/dns'
++    | '/dns-propagation-checker'
+     | '/email'
+     | '/geo'
+     | '/headers'
+     | '/hosting'
+     | '/lookup'
++    | '/mx-lookup'
+     | '/my-ip'
+     | '/ports'
+     | '/sitemap'
+     | '/sitemap.xml'
++    | '/spf-checker'
+     | '/ssl'
+     | '/tools'
+     | '/whois'
+@@ -221,18 +269,22 @@ export interface FileRouteTypes {
+ }
+ export interface RootRouteChildren {
+   IndexRoute: typeof IndexRoute
++  AboutRoute: typeof AboutRoute
+   BlacklistRoute: typeof BlacklistRoute
+   BlogRoute: typeof BlogRoute
+   DnsRoute: typeof DnsRoute
++  DnsPropagationCheckerRoute: typeof DnsPropagationCheckerRoute
+   EmailRoute: typeof EmailRoute
+   GeoRoute: typeof GeoRoute
+   HeadersRoute: typeof HeadersRoute
+   HostingRoute: typeof HostingRoute
+   LookupRoute: typeof LookupRoute
++  MxLookupRoute: typeof MxLookupRoute
+   MyIpRoute: typeof MyIpRoute
+   PortsRoute: typeof PortsRoute
+   SitemapRoute: typeof SitemapRoute
+   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
++  SpfCheckerRoute: typeof SpfCheckerRoute
+   SslRoute: typeof SslRoute
+   ToolsRoute: typeof ToolsRoute
+   WhoisRoute: typeof WhoisRoute
+@@ -247,6 +299,13 @@ declare module '@tanstack/react-router' {
+       preLoaderRoute: typeof IndexRouteImport
+       parentRoute: typeof rootRouteImport
+     }
++    '/about': {
++      id: '/about'
++      path: '/about'
++      fullPath: '/about'
++      preLoaderRoute: typeof AboutRouteImport
++      parentRoute: typeof rootRouteImport
++    }
+     '/blacklist': {
+       id: '/blacklist'
+       path: '/blacklist'
+@@ -268,6 +327,13 @@ declare module '@tanstack/react-router' {
+       preLoaderRoute: typeof DnsRouteImport
+       parentRoute: typeof rootRouteImport
+     }
++    '/dns-propagation-checker': {
++      id: '/dns-propagation-checker'
++      path: '/dns-propagation-checker'
++      fullPath: '/dns-propagation-checker'
++      preLoaderRoute: typeof DnsPropagationCheckerRouteImport
++      parentRoute: typeof rootRouteImport
++    }
+     '/email': {
+       id: '/email'
+       path: '/email'
+@@ -303,6 +369,13 @@ declare module '@tanstack/react-router' {
+       preLoaderRoute: typeof LookupRouteImport
+       parentRoute: typeof rootRouteImport
+     }
++    '/mx-lookup': {
++      id: '/mx-lookup'
++      path: '/mx-lookup'
++      fullPath: '/mx-lookup'
++      preLoaderRoute: typeof MxLookupRouteImport
++      parentRoute: typeof rootRouteImport
++    }
+     '/my-ip': {
+       id: '/my-ip'
+       path: '/my-ip'
+@@ -331,6 +404,13 @@ declare module '@tanstack/react-router' {
+       preLoaderRoute: typeof SitemapDotxmlRouteImport
+       parentRoute: typeof rootRouteImport
+     }
++    '/spf-checker': {
++      id: '/spf-checker'
++      path: '/spf-checker'
++      fullPath: '/spf-checker'
++      preLoaderRoute: typeof SpfCheckerRouteImport
++      parentRoute: typeof rootRouteImport
++    }
+     '/ssl': {
+       id: '/ssl'
+       path: '/ssl'
+@@ -357,18 +437,22 @@ declare module '@tanstack/react-router' {
+ 
+ const rootRouteChildren: RootRouteChildren = {
+   IndexRoute: IndexRoute,
++  AboutRoute: AboutRoute,
+   BlacklistRoute: BlacklistRoute,
+   BlogRoute: BlogRoute,
+   DnsRoute: DnsRoute,
++  DnsPropagationCheckerRoute: DnsPropagationCheckerRoute,
+   EmailRoute: EmailRoute,
+   GeoRoute: GeoRoute,
+   HeadersRoute: HeadersRoute,
+   HostingRoute: HostingRoute,
+   LookupRoute: LookupRoute,
++  MxLookupRoute: MxLookupRoute,
+   MyIpRoute: MyIpRoute,
+   PortsRoute: PortsRoute,
+   SitemapRoute: SitemapRoute,
+   SitemapDotxmlRoute: SitemapDotxmlRoute,
++  SpfCheckerRoute: SpfCheckerRoute,
+   SslRoute: SslRoute,
+   ToolsRoute: ToolsRoute,
+   WhoisRoute: WhoisRoute,
+diff --git a/src/routes/about.tsx b/src/routes/about.tsx
+new file mode 100644
+index 0000000..e49e0d8
+--- /dev/null
++++ b/src/routes/about.tsx
+@@ -0,0 +1,107 @@
++import { createFileRoute, Link } from "@tanstack/react-router";
++import { Seo } from "@/components/Seo";
++import { SiteHeader } from "@/components/SiteHeader";
++import { SiteFooter } from "@/components/SiteFooter";
++import { Globe, ShieldCheck, Zap, Lock } from "lucide-react";
++
++export const Route = createFileRoute("/about")({
++  head: () => ({
++    meta: [
++      { title: "About DNSChecker — Free DNS, IP, WHOIS & SSL Tools" },
++      { name: "description", content: "DNSChecker (dnschecker.space) is a free network intelligence toolkit for developers, sysadmins and website owners: DNS propagation checks, IP lookup, WHOIS, SSL, MX and SPF tools — no sign-up, no tracking of your lookups." },
++      { property: "og:title", content: "About DNSChecker" },
++      { property: "og:description", content: "Free DNS, IP, WHOIS, SSL and email tools for developers and sysadmins." },
++      { property: "og:url", content: "https://www.dnschecker.space/about" },
++    ],
++    links: [{ rel: "canonical", href: "https://www.dnschecker.space/about" }],
++  }),
++  component: AboutPage,
++});
++
++const orgSchema = {
++  "@context": "https://schema.org",
++  "@type": "Organization",
++  name: "DNSChecker",
++  alternateName: ["DNS Checker", "DNSChecker Space"],
++  url: "https://www.dnschecker.space",
++  description:
++    "Free online DNS checker and network intelligence toolkit: DNS propagation, IP lookup, WHOIS, SSL, MX, SPF and security header tools.",
++};
++
++function AboutPage() {
++  return (
++    <div className="min-h-screen flex flex-col">
++      <Seo
++        title="About DNSChecker — Free DNS, IP, WHOIS & SSL Tools"
++        description="DNSChecker is a free network intelligence toolkit for developers, sysadmins and website owners."
++        url="https://www.dnschecker.space/about"
++        schema={orgSchema}
++      />
++      <SiteHeader />
++
++      <section className="mx-auto w-full max-w-4xl px-4 sm:px-6 py-16 flex-1">
++        <h1 className="text-4xl sm:text-5xl font-black text-foreground mb-6 tracking-tight">
++          About <span className="text-gradient">DNSChecker</span>
++        </h1>
++        <div className="space-y-6 text-secondary-foreground leading-relaxed">
++          <p>
++            DNSChecker (dnschecker.space) is a free network intelligence toolkit built for developers, system
++            administrators, and website owners who need fast, trustworthy answers about domains and IP addresses —
++            without creating an account or wading through ads.
++          </p>
++          <p>
++            The toolkit brings the lookups professionals run every day into one console: a{" "}
++            <Link to="/dns-propagation-checker" className="text-emerald-600 font-semibold hover:underline">DNS propagation checker</Link>{" "}
++            that polls global resolvers in real time, full{" "}
++            <Link to="/dns" className="text-emerald-600 font-semibold hover:underline">DNS record lookups</Link>,{" "}
++            <Link to="/lookup" className="text-emerald-600 font-semibold hover:underline">IP address intelligence</Link>,{" "}
++            <Link to="/whois" className="text-emerald-600 font-semibold hover:underline">WHOIS</Link>,{" "}
++            <Link to="/ssl" className="text-emerald-600 font-semibold hover:underline">SSL certificate checks</Link>,{" "}
++            <Link to="/mx-lookup" className="text-emerald-600 font-semibold hover:underline">MX</Link> and{" "}
++            <Link to="/spf-checker" className="text-emerald-600 font-semibold hover:underline">SPF</Link> email
++            diagnostics, DNS blacklist monitoring, open-port checks, security-header grading, and IP geolocation.
++          </p>
++          <h2 className="text-2xl font-black text-foreground pt-4">How it works</h2>
++          <p>
++            Lookups run over encrypted DNS-over-HTTPS (DoH) against public resolvers such as Cloudflare and
++            Google, and against live registry and certificate-transparency data. Results are computed in real
++            time for every query — nothing is copied from a stale database.
++          </p>
++          <div className="grid sm:grid-cols-3 gap-4 pt-2">
++            <div className="p-5 rounded-2xl bg-white border border-slate-200">
++              <Zap className="h-5 w-5 text-emerald-600 mb-2" />
++              <h3 className="font-bold text-foreground mb-1">Fast by design</h3>
++              <p className="text-sm">Server-rendered pages and direct resolver queries return answers in seconds.</p>
++            </div>
++            <div className="p-5 rounded-2xl bg-white border border-slate-200">
++              <Lock className="h-5 w-5 text-emerald-600 mb-2" />
++              <h3 className="font-bold text-foreground mb-1">Private</h3>
++              <p className="text-sm">No account, no sign-up, and the domains you look up are not sold or shared.</p>
++            </div>
++            <div className="p-5 rounded-2xl bg-white border border-slate-200">
++              <ShieldCheck className="h-5 w-5 text-emerald-600 mb-2" />
++              <h3 className="font-bold text-foreground mb-1">Honest data</h3>
++              <p className="text-sm">We show live results with their TTLs and sources, and say so when a record does not exist.</p>
++            </div>
++          </div>
++          <h2 className="text-2xl font-black text-foreground pt-4">Learn as you check</h2>
++          <p>
++            Every tool page explains what it checks and how to interpret the results, and our{" "}
++            <Link to="/blog" className="text-emerald-600 font-semibold hover:underline">guides and tutorials</Link>{" "}
++            go deeper — DNS propagation, email authentication (SPF, DKIM, DMARC), SSL validation, and IP
++            reputation. Start with the{" "}
++            <Link to="/tools" className="text-emerald-600 font-semibold hover:underline">full tool list</Link>{" "}
++            or run your first check from the{" "}
++            <Link to="/" className="text-emerald-600 font-semibold hover:underline">homepage console</Link>.
++          </p>
++          <p className="flex items-center gap-2 text-sm">
++            <Globe className="h-4 w-4 text-emerald-600" />
++            DNSChecker is free for personal and professional use.
++          </p>
++        </div>
++      </section>
++
++      <SiteFooter />
++    </div>
++  );
++}
+diff --git a/src/routes/dns-propagation-checker.tsx b/src/routes/dns-propagation-checker.tsx
+new file mode 100644
+index 0000000..8c00c6f
+--- /dev/null
++++ b/src/routes/dns-propagation-checker.tsx
+@@ -0,0 +1,288 @@
++import { createFileRoute, Link } from "@tanstack/react-router";
++import { Seo } from "@/components/Seo";
++import { useState } from "react";
++import { motion, AnimatePresence } from "framer-motion";
++import { SiteHeader } from "@/components/SiteHeader";
++import { SiteFooter } from "@/components/SiteFooter";
++import type { DnsAnswer, DnsType } from "@/lib/dns";
++import { Globe, Loader2, ArrowRight, CheckCircle2, XCircle, AlertCircle, Terminal } from "lucide-react";
++
++export const Route = createFileRoute("/dns-propagation-checker")({
++  head: () => ({
++    meta: [
++      { title: "DNS Propagation Checker — Check DNS Propagation Worldwide | DNSChecker" },
++      { name: "description", content: "Free DNS propagation checker. Verify whether DNS record changes have propagated worldwide by querying Cloudflare, Google, Quad9, AdGuard, OpenDNS and CleanBrowsing resolvers in real time." },
++      { property: "og:title", content: "DNS Propagation Checker — Check DNS Propagation Worldwide" },
++      { property: "og:description", content: "See if your DNS changes have propagated across global resolvers. Free, instant, no sign-up." },
++      { property: "og:url", content: "https://www.dnschecker.space/dns-propagation-checker" },
++    ],
++    links: [{ rel: "canonical", href: "https://www.dnschecker.space/dns-propagation-checker" }],
++  }),
++  component: PropagationPage,
++});
++
++const TYPES: DnsType[] = ["A", "AAAA", "MX", "NS", "TXT", "CNAME", "SOA", "CAA"];
++
++interface Resolver {
++  name: string;
++  region: string;
++  url: string;
++}
++
++const RESOLVERS: Resolver[] = [
++  { name: "Cloudflare", region: "Global (Anycast)", url: "https://cloudflare-dns.com/dns-query" },
++  { name: "Google", region: "Global (Anycast)", url: "https://dns.google/resolve" },
++  { name: "Quad9", region: "Global (Anycast)", url: "https://dns.quad9.net/dns-query" },
++  { name: "AdGuard", region: "Europe", url: "https://dns.adguard-dns.com/dns-query" },
++  { name: "OpenDNS (Cisco)", region: "United States", url: "https://doh.opendns.com/dns-query" },
++  { name: "CleanBrowsing", region: "United States", url: "https://doh.cleanbrowsing.org/doh/security-filter/" },
++];
++
++interface ResolverResult {
++  resolver: Resolver;
++  status: "ok" | "empty" | "error";
++  values: string[];
++  ttl: number | null;
++}
++
++async function queryResolver(r: Resolver, name: string, type: DnsType): Promise<ResolverResult> {
++  try {
++    const res = await fetch(`${r.url}?name=${encodeURIComponent(name)}&type=${type}`, {
++      headers: { Accept: "application/dns-json" },
++    });
++    if (!res.ok) throw new Error(String(res.status));
++    const data = await res.json();
++    const answers = (data.Answer ?? []) as DnsAnswer[];
++    return {
++      resolver: r,
++      status: answers.length ? "ok" : "empty",
++      values: answers.map((a) => a.data).sort(),
++      ttl: answers.length ? answers[0].TTL : null,
++    };
++  } catch {
++    return { resolver: r, status: "error", values: [], ttl: null };
++  }
++}
++
++const FAQS = [
++  {
++    question: "What is DNS propagation?",
++    answer:
++      "DNS propagation is the period after you change a DNS record while resolvers around the world update their caches. Each record has a TTL (time to live); until a resolver's cached copy expires, it keeps answering with the old value. That is why a change can be visible in one country and not another for a while.",
++  },
++  {
++    question: "How long does DNS propagation take?",
++    answer:
++      "Most changes propagate within a few minutes to a few hours. The worst case is set by the record's old TTL — a record cached with a 48-hour TTL can take up to 48 hours to fully refresh everywhere, although modern resolvers usually update much sooner.",
++  },
++  {
++    question: "How can I speed up DNS propagation?",
++    answer:
++      "Lower the TTL on the record to 300 seconds at least one full old-TTL period before making the change, make the change, wait for caches to expire, then raise the TTL again. You cannot force other networks' caches to clear, but planning the TTL drop removes most of the wait.",
++  },
++  {
++    question: "Why do different resolvers show different results?",
++    answer:
++      "Each resolver caches answers independently and refreshes on its own schedule. During propagation it is normal for Cloudflare to show the new value while another resolver still serves the cached old one. When every resolver here agrees, propagation is complete.",
++  },
++  {
++    question: "Which record types can I check propagation for?",
++    answer:
++      "This tool checks A, AAAA, MX, NS, TXT, CNAME, SOA and CAA records — the types used for websites, email delivery, domain verification and certificate issuance.",
++  },
++];
++
++function PropagationPage() {
++  const [name, setName] = useState("");
++  const [type, setType] = useState<DnsType>("A");
++  const [loading, setLoading] = useState(false);
++  const [results, setResults] = useState<ResolverResult[] | null>(null);
++
++  const submit = async (e: React.FormEvent) => {
++    e.preventDefault();
++    let v = name.trim();
++    if (!v) return;
++    try {
++      if (v.startsWith("http")) v = new URL(v).hostname;
++      else if (v.includes("/")) v = v.split("/")[0];
++    } catch {
++      v = v.replace(/^https?:\/\//, "").split("/")[0];
++    }
++    setLoading(true);
++    setResults(null);
++    const out = await Promise.all(RESOLVERS.map((r) => queryResolver(r, v, type)));
++    setResults(out);
++    setLoading(false);
++  };
++
++  const answered = results?.filter((r) => r.status === "ok") ?? [];
++  const groups = new Map<string, number>();
++  answered.forEach((r) => {
++    const key = r.values.join(" | ");
++    groups.set(key, (groups.get(key) ?? 0) + 1);
++  });
++  const topCount = groups.size ? Math.max(...groups.values()) : 0;
++  const agreement = answered.length ? Math.round((topCount / answered.length) * 100) : 0;
++
++  return (
++    <div className="min-h-screen flex flex-col">
++      <Seo
++        title="DNS Propagation Checker — Check DNS Propagation Worldwide"
++        description="Free DNS propagation checker. Verify whether DNS record changes have propagated worldwide across global resolvers in real time."
++        url="https://www.dnschecker.space/dns-propagation-checker"
++        faqs={FAQS}
++      />
++      <SiteHeader />
++
++      <section className="relative pt-16 pb-12 overflow-hidden">
++        <div className="absolute inset-0 grid-bg opacity-20 [mask-image:radial-gradient(ellipse_at_top,black_50%,transparent_90%)]" />
++        <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
++          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl">
++            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 border border-emerald-200 mb-6">
++              <Globe className="h-3 w-3 text-emerald-600" />
++              <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-600">Global Propagation Monitor</span>
++            </div>
++            <h1 className="text-4xl sm:text-6xl font-black text-foreground mb-6 tracking-tight">
++              DNS Propagation <span className="text-gradient">Checker</span>
++            </h1>
++            <p className="text-lg text-secondary-foreground max-w-2xl leading-relaxed mb-12">
++              Changed a DNS record? Check whether the change has propagated worldwide. We query six global
++              resolvers at the same moment, so you can see exactly who already serves the new value — and who is
++              still answering from cache.
++            </p>
++
++            <form onSubmit={submit} className="relative max-w-3xl group">
++              <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-400 rounded-[24px] blur opacity-25 group-hover:opacity-40 transition duration-1000" />
++              <div className="relative flex flex-col sm:flex-row items-center bg-white border border-slate-200 shadow-sm rounded-[20px] p-2 overflow-hidden">
++                <div className="flex flex-1 items-center pl-4 w-full">
++                  <Globe className="h-5 w-5 text-secondary-foreground/40 mr-4" />
++                  <input
++                    value={name}
++                    onChange={(e) => setName(e.target.value)}
++                    placeholder="e.g. example.com"
++                    className="flex-1 bg-transparent border-none outline-none text-foreground placeholder:text-secondary-foreground/30 font-mono text-base py-3"
++                  />
++                </div>
++                <div className="flex items-center gap-3 w-full sm:w-auto p-2 sm:p-0">
++                  <select
++                    value={type}
++                    onChange={(e) => setType(e.target.value as DnsType)}
++                    className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-foreground outline-none focus:border-emerald-500/50 transition-all cursor-pointer"
++                  >
++                    {TYPES.map((t) => (
++                      <option key={t} value={t}>{t}</option>
++                    ))}
++                  </select>
++                  <button
++                    type="submit"
++                    disabled={loading}
++                    className="flex-1 sm:flex-none bg-gradient-to-r from-emerald-500 to-teal-500 hover:scale-105 active:scale-95 text-white px-8 py-3.5 rounded-[16px] font-black text-sm transition-all shadow-md flex items-center justify-center gap-2 disabled:opacity-50"
++                  >
++                    {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Check"}
++                    {!loading && <ArrowRight className="h-4 w-4" />}
++                  </button>
++                </div>
++              </div>
++            </form>
++          </motion.div>
++        </div>
++      </section>
++
++      <section className="mx-auto w-full max-w-7xl px-4 sm:px-6 py-12 flex-1">
++        <AnimatePresence mode="wait">
++          {results && (
++            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
++              <div className="flex items-center gap-3 mb-6">
++                <Terminal className="h-5 w-5 text-emerald-600" />
++                <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-foreground">
++                  {answered.length === 0
++                    ? "No resolver returned this record"
++                    : agreement === 100
++                      ? `Propagation complete — all resolvers agree (${agreement}%)`
++                      : `Propagation in progress — ${agreement}% of resolvers agree on the leading answer`}
++                </h2>
++              </div>
++              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
++                {results.map((r) => (
++                  <div key={r.resolver.name} className="bg-white shadow rounded-3xl p-6 border border-slate-200">
++                    <div className="flex items-center justify-between mb-1">
++                      <span className="font-bold text-foreground">{r.resolver.name}</span>
++                      {r.status === "ok" && <CheckCircle2 className="h-5 w-5 text-emerald-500" />}
++                      {r.status === "empty" && <AlertCircle className="h-5 w-5 text-amber-500" />}
++                      {r.status === "error" && <XCircle className="h-5 w-5 text-red-500" />}
++                    </div>
++                    <p className="text-xs text-secondary-foreground/60 mb-4">{r.resolver.region}{r.ttl != null ? ` • TTL ${r.ttl}s` : ""}</p>
++                    {r.status === "ok" ? (
++                      <ul className="font-mono text-sm space-y-1 break-all">
++                        {r.values.map((v, i) => (
++                          <li key={i} className="text-foreground font-semibold">{v}</li>
++                        ))}
++                      </ul>
++                    ) : (
++                      <p className="font-mono text-sm text-secondary-foreground/50">
++                        {r.status === "empty" ? "NO_RECORD" : "UNREACHABLE"}
++                      </p>
++                    )}
++                  </div>
++                ))}
++              </div>
++            </motion.div>
++          )}
++        </AnimatePresence>
++
++        <div className="max-w-4xl mt-16 space-y-10 text-secondary-foreground leading-relaxed">
++          <section>
++            <h2 className="text-2xl font-black text-foreground mb-3">What is DNS propagation?</h2>
++            <p>
++              When you edit a DNS record — pointing your domain at a new server, adding an MX record for email, or
++              verifying ownership with a TXT record — the change is saved on your authoritative nameservers
++              instantly. The rest of the internet, however, reads DNS through recursive resolvers that cache
++              answers. <strong>DNS propagation</strong> is the time it takes for every cache worldwide to expire
++              the old answer and pick up the new one.
++            </p>
++          </section>
++          <section>
++            <h2 className="text-2xl font-black text-foreground mb-3">How to check DNS propagation</h2>
++            <ol className="list-decimal pl-6 space-y-2">
++              <li>Enter your domain name above (for example <span className="font-mono">example.com</span>).</li>
++              <li>Select the record type you changed — A, AAAA, MX, NS, TXT, CNAME, SOA or CAA.</li>
++              <li>Click <strong>Check</strong>. Each resolver card shows the exact values that network returns right now.</li>
++              <li>If all cards match, propagation is complete. If some still show the old value, those caches have not expired yet — wait for the TTL to pass and check again.</li>
++            </ol>
++          </section>
++          <section>
++            <h2 className="text-2xl font-black text-foreground mb-3">Why propagation takes time: TTL explained</h2>
++            <p>
++              Every DNS record carries a TTL (time to live) in seconds. A resolver that fetched your record with a
++              TTL of 86,400 may serve the cached answer for up to 24 hours. Professional workflow: lower the TTL
++              to 300 a day before a planned migration, make the change during the quiet window, verify propagation
++              here, and raise the TTL again once everything agrees.
++            </p>
++          </section>
++          <section>
++            <h2 className="text-2xl font-black text-foreground mb-4">Frequently asked questions</h2>
++            <div className="space-y-4">
++              {FAQS.map((f) => (
++                <div key={f.question} className="bg-white border border-slate-200 rounded-2xl p-5">
++                  <h3 className="font-bold text-foreground mb-1">{f.question}</h3>
++                  <p className="text-sm">{f.answer}</p>
++                </div>
++              ))}
++            </div>
++          </section>
++          <section>
++            <h2 className="text-2xl font-black text-foreground mb-3">Related tools</h2>
++            <p className="space-x-4">
++              <Link to="/dns" className="text-emerald-600 font-semibold hover:underline">DNS Lookup</Link>
++              <Link to="/mx-lookup" className="text-emerald-600 font-semibold hover:underline">MX Lookup</Link>
++              <Link to="/spf-checker" className="text-emerald-600 font-semibold hover:underline">SPF Checker</Link>
++              <Link to="/whois" className="text-emerald-600 font-semibold hover:underline">WHOIS Lookup</Link>
++            </p>
++          </section>
++        </div>
++      </section>
++
++      <SiteFooter />
++    </div>
++  );
++}
+diff --git a/src/routes/dns.tsx b/src/routes/dns.tsx
+index cd6af91..524392c 100644
+--- a/src/routes/dns.tsx
++++ b/src/routes/dns.tsx
+@@ -92,7 +92,7 @@ function DnsPage() {
+               <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-600">DNS Resolver v2.1</span>
+             </div>
+             <h1 className="text-4xl sm:text-6xl font-black text-foreground mb-6 tracking-tight">
+-              DNS <span className="text-gradient">Records</span>
++              DNS <span className="text-gradient">Checker</span>
+             </h1>
+             <p className="text-lg text-secondary-foreground max-w-2xl leading-relaxed mb-12">
+               Query global DNS records over HTTPS using Cloudflare's secure resolver. Support for all major record types including A, MX, TXT, and PTR.
+diff --git a/src/routes/email.tsx b/src/routes/email.tsx
+index 2191be1..c4d793e 100644
+--- a/src/routes/email.tsx
++++ b/src/routes/email.tsx
+@@ -92,7 +92,7 @@ function EmailPage() {
+               <span className="text-[11px] font-bold tracking-[0.2em] text-emerald-600 uppercase">Mail Infrastructure</span>
+             </div>
+             <h1 className="text-4xl sm:text-6xl font-black text-foreground mb-6 tracking-tight">
+-              Email <span className="text-gradient">Diagnostics</span>
++              Email <span className="text-gradient">Checker</span>
+             </h1>
+             <p className="text-lg text-secondary-foreground max-w-2xl mx-auto leading-relaxed mb-12">
+               Verify mail exchange (MX) availability, sender policy framework (SPF), and DMARC configuration.
+diff --git a/src/routes/headers.tsx b/src/routes/headers.tsx
+index cd0b7a5..b7b33cd 100644
+--- a/src/routes/headers.tsx
++++ b/src/routes/headers.tsx
+@@ -83,7 +83,7 @@ function HeadersPage() {
+               <span className="text-[11px] font-bold uppercase tracking-widest text-emerald-600">Request Inspector</span>
+             </div>
+             <h1 className="text-4xl sm:text-6xl font-black text-foreground mb-6 tracking-tight">
+-              Header <span className="text-gradient">Fingerprint</span>
++              Security Headers <span className="text-gradient">Checker</span>
+             </h1>
+             <p className="text-lg text-secondary-foreground max-w-2xl leading-relaxed mb-8">
+               Capture and analyze every HTTP header your browser transmits during a standard request. Discover metadata, language preferences, and tracking indicators.
+diff --git a/src/routes/index.tsx b/src/routes/index.tsx
+index f662085..05be1da 100644
+--- a/src/routes/index.tsx
++++ b/src/routes/index.tsx
+@@ -21,16 +21,16 @@ import { useRef } from "react";
+ export const Route = createFileRoute("/")({
+   head: () => ({
+     meta: [
+-      { title: "IP Checker & IP Address Lookup - Check Your Public IP Location" },
++      { title: "DNS Checker — DNS Propagation, IP Lookup, WHOIS & SSL Tools | DNSChecker" },
+       { name: "description", content: "Free IP Checker and IP Address Lookup tool. Instantly test your public IPv4/IPv6, PC local network IP, geolocation, ISP, blacklist status, and WebRTC leaks." },
+       { name: "author", content: "DNSChecker Team" },
+       { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" },
+-      { property: "og:title", content: "IP Checker & IP Address Lookup - Check Your Public IP Location" },
++      { property: "og:title", content: "DNS Checker — DNS Propagation, IP Lookup, WHOIS & SSL Tools" },
+       { property: "og:description", content: "Free IP Checker and IP Address Lookup tool. Instantly test your public IPv4/IPv6, PC local IP, geolocation, and blacklist status." },
+       { property: "og:type", content: "website" },
+       { property: "og:url", content: "https://www.dnschecker.space/" },
+       { name: "twitter:card", content: "summary_large_image" },
+-      { name: "twitter:title", content: "IP Checker & IP Address Lookup" },
++      { name: "twitter:title", content: "DNS Checker — Free DNS, IP, WHOIS & SSL Tools" },
+       { name: "twitter:description", content: "Free IP Checker and IP Address Lookup tool. Instantly test your public IPv4/IPv6, PC local IP, geolocation, and blacklist status." },
+     ],
+     links: [{ rel: "canonical", href: "https://www.dnschecker.space/" }],
+@@ -64,6 +64,9 @@ const homeFaqs = [
+ const tools = [
+   { icon: Globe, title: "IP Checker", desc: "Inspect any IPv4 / IPv6 address: ISP, ASN, location, timezone.", to: "/my-ip" },
+   { icon: Network, title: "DNS Lookup", desc: "Resolve A, AAAA, MX, NS, TXT, CNAME, SOA and CAA records.", to: "/dns" },
++  { icon: Globe, title: "DNS Propagation Checker", desc: "Check if DNS changes have propagated across global resolvers.", to: "/dns-propagation-checker" },
++  { icon: Mail, title: "MX Lookup", desc: "Check mail server (MX) records and priorities for any domain.", to: "/mx-lookup" },
++  { icon: ShieldCheck, title: "SPF Checker", desc: "Validate SPF records and count DNS lookups against the limit of 10.", to: "/spf-checker" },
+   { icon: FileText, title: "Domain WHOIS", desc: "Registrar, age, expiry, status flags, nameservers and DNSSEC.", to: "/whois" },
+   { icon: Server, title: "Hosting Check", desc: "Discover hosting provider, ASN, datacenter location, and server environment.", to: "/hosting" },
+   { icon: ShieldCheck, title: "SSL Checker", desc: "Live TLS reachability plus certificate transparency history.", to: "/ssl" },
+@@ -111,7 +114,7 @@ function HomePage() {
+             transition={{ duration: 0.6, delay: 0.1 }}
+             className="text-[38px] sm:text-[52px] lg:text-[72px] font-[800] text-foreground leading-[1.1] mb-8 tracking-tight"
+           >
+-            Network &amp; security <br />
++            DNS Checker &amp; network <br />
+             <span className="bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent drop-shadow-sm">intelligence toolkit</span>
+           </motion.h1>
+           
+diff --git a/src/routes/mx-lookup.tsx b/src/routes/mx-lookup.tsx
+new file mode 100644
+index 0000000..a183abf
+--- /dev/null
++++ b/src/routes/mx-lookup.tsx
+@@ -0,0 +1,258 @@
++import { createFileRoute, Link } from "@tanstack/react-router";
++import { Seo } from "@/components/Seo";
++import { useState } from "react";
++import { motion, AnimatePresence } from "framer-motion";
++import { SiteHeader } from "@/components/SiteHeader";
++import { SiteFooter } from "@/components/SiteFooter";
++import { dohQuery } from "@/lib/dns";
++import { Mail, Loader2, ArrowRight, CheckCircle2, AlertCircle, Terminal } from "lucide-react";
++
++export const Route = createFileRoute("/mx-lookup")({
++  head: () => ({
++    meta: [
++      { title: "MX Lookup — Check MX Records for Any Domain | DNSChecker" },
++      { name: "description", content: "Free MX lookup tool. Check the MX (mail exchange) records of any domain instantly — mail server hostnames, priorities and delivery order — and diagnose email problems." },
++      { property: "og:title", content: "MX Lookup — Check MX Records for Any Domain" },
++      { property: "og:description", content: "Instant MX record lookup with priorities and mail-server analysis. Free, no sign-up." },
++      { property: "og:url", content: "https://www.dnschecker.space/mx-lookup" },
++    ],
++    links: [{ rel: "canonical", href: "https://www.dnschecker.space/mx-lookup" }],
++  }),
++  component: MxPage,
++});
++
++interface MxRecord {
++  priority: number;
++  host: string;
++  ttl: number;
++}
++
++const FAQS = [
++  {
++    question: "What is an MX record?",
++    answer:
++      "An MX (Mail Exchange) record tells sending mail servers where to deliver email for a domain. Each MX record points to a mail server hostname and carries a priority number. Without at least one valid MX record, a domain cannot receive email.",
++  },
++  {
++    question: "What does MX priority mean?",
++    answer:
++      "Lower numbers are tried first. If your records are 10 and 20, senders deliver to the priority-10 server and only fall back to priority-20 if the first is unreachable. Equal priorities share the load between servers.",
++  },
++  {
++    question: "Why is my email not arriving?",
++    answer:
++      "Common causes: missing or recently changed MX records that have not propagated yet, MX records pointing to a hostname with no A record, or a mail host that is down. Run this lookup, then check propagation with the DNS Propagation Checker, and verify SPF, DKIM and DMARC so receiving servers do not reject or spam-folder your mail.",
++  },
++  {
++    question: "What are Google Workspace and Microsoft 365 MX records?",
++    answer:
++      "Google Workspace uses smtp.google.com (priority 1) for newer setups, or the five aspmx.l.google.com / alt*.aspmx.l.google.com hosts. Microsoft 365 uses a single MX host shaped like your-domain.mail.protection.outlook.com. If these are missing after you connect a mail service, email will not be delivered.",
++  },
++  {
++    question: "Can an MX record point to an IP address or CNAME?",
++    answer:
++      "No. An MX record must point to a hostname that has an A or AAAA record. Pointing MX at an IP address or at a CNAME is invalid and some senders will refuse delivery.",
++  },
++];
++
++function MxPage() {
++  const [name, setName] = useState("");
++  const [loading, setLoading] = useState(false);
++  const [error, setError] = useState<string | null>(null);
++  const [records, setRecords] = useState<MxRecord[] | null>(null);
++
++  const submit = async (e: React.FormEvent) => {
++    e.preventDefault();
++    let v = name.trim();
++    if (!v) return;
++    try {
++      if (v.startsWith("http")) v = new URL(v).hostname;
++      else if (v.includes("/")) v = v.split("/")[0];
++      if (v.includes("@")) v = v.split("@").pop() ?? v;
++    } catch {
++      v = v.replace(/^https?:\/\//, "").split("/")[0];
++    }
++    setLoading(true);
++    setError(null);
++    setRecords(null);
++    try {
++      const data = await dohQuery(v, "MX");
++      const parsed = data
++        .map((a) => {
++          const parts = a.data.trim().split(/\s+/);
++          return { priority: parseInt(parts[0], 10), host: parts.slice(1).join(" ").replace(/\.$/, ""), ttl: a.TTL };
++        })
++        .filter((r) => !Number.isNaN(r.priority) && r.host)
++        .sort((a, b) => a.priority - b.priority);
++      setRecords(parsed);
++    } catch (err) {
++      setError(err instanceof Error ? err.message : "Lookup failed");
++    } finally {
++      setLoading(false);
++    }
++  };
++
++  return (
++    <div className="min-h-screen flex flex-col">
++      <Seo
++        title="MX Lookup — Check MX Records for Any Domain"
++        description="Free MX lookup tool. Check MX records, mail server priorities and delivery order for any domain instantly."
++        url="https://www.dnschecker.space/mx-lookup"
++        faqs={FAQS}
++      />
++      <SiteHeader />
++
++      <section className="relative pt-16 pb-12 overflow-hidden">
++        <div className="absolute inset-0 grid-bg opacity-20 [mask-image:radial-gradient(ellipse_at_top,black_50%,transparent_90%)]" />
++        <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
++          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl">
++            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 border border-emerald-200 mb-6">
++              <Mail className="h-3 w-3 text-emerald-600" />
++              <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-600">Mail Exchange Lookup</span>
++            </div>
++            <h1 className="text-4xl sm:text-6xl font-black text-foreground mb-6 tracking-tight">
++              MX <span className="text-gradient">Lookup</span>
++            </h1>
++            <p className="text-lg text-secondary-foreground max-w-2xl leading-relaxed mb-12">
++              Find out where email for a domain is delivered. This MX lookup returns every mail exchange record,
++              sorted by priority, so you can verify a new mail service or diagnose why messages are not arriving.
++            </p>
++
++            <form onSubmit={submit} className="relative max-w-3xl group">
++              <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-400 rounded-[24px] blur opacity-25 group-hover:opacity-40 transition duration-1000" />
++              <div className="relative flex items-center bg-white border border-slate-200 shadow-sm rounded-[20px] p-2 overflow-hidden">
++                <div className="flex flex-1 items-center pl-4 w-full">
++                  <Mail className="h-5 w-5 text-secondary-foreground/40 mr-4" />
++                  <input
++                    value={name}
++                    onChange={(e) => setName(e.target.value)}
++                    placeholder="e.g. gmail.com or you@company.com"
++                    className="flex-1 bg-transparent border-none outline-none text-foreground placeholder:text-secondary-foreground/30 font-mono text-base py-3"
++                  />
++                </div>
++                <button
++                  type="submit"
++                  disabled={loading}
++                  className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:scale-105 active:scale-95 text-white px-8 py-3.5 rounded-[16px] font-black text-sm transition-all shadow-md flex items-center justify-center gap-2 disabled:opacity-50"
++                >
++                  {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Lookup"}
++                  {!loading && <ArrowRight className="h-4 w-4" />}
++                </button>
++              </div>
++            </form>
++          </motion.div>
++        </div>
++      </section>
++
++      <section className="mx-auto w-full max-w-7xl px-4 sm:px-6 py-12 flex-1">
++        <AnimatePresence mode="wait">
++          {error && (
++            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="glass rounded-2xl p-6 border-danger/20 bg-danger/5 text-danger font-mono text-sm flex items-center gap-3">
++              <Terminal className="h-5 w-5" />
++              {error}
++            </motion.div>
++          )}
++          {records && (
++            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white shadow-lg rounded-[32px] p-10 border border-slate-200 overflow-hidden">
++              <div className="flex items-center gap-2 mb-8">
++                <Terminal className="h-5 w-5 text-emerald-600" />
++                <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-foreground">
++                  {records.length} MX Record{records.length === 1 ? "" : "s"} Found
++                </h2>
++              </div>
++              {records.length === 0 ? (
++                <div className="flex items-start gap-3 text-amber-600">
++                  <AlertCircle className="h-5 w-5 mt-0.5" />
++                  <p className="text-sm leading-relaxed">
++                    This domain publishes <strong>no MX records</strong> — it cannot receive email. If you just
++                    added MX records, they may still be propagating; verify with the{" "}
++                    <Link to="/dns-propagation-checker" className="underline font-semibold">DNS Propagation Checker</Link>.
++                  </p>
++                </div>
++              ) : (
++                <div className="overflow-x-auto custom-scrollbar">
++                  <table className="w-full text-left">
++                    <thead>
++                      <tr className="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary-foreground/40 border-b border-slate-200">
++                        <th className="pb-4 pr-6">Priority</th>
++                        <th className="pb-4 pr-6">Mail Server</th>
++                        <th className="pb-4 pr-6">TTL</th>
++                        <th className="pb-4">Status</th>
++                      </tr>
++                    </thead>
++                    <tbody className="font-mono text-sm">
++                      {records.map((r, i) => (
++                        <tr key={i} className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
++                          <td className="py-4 pr-6">
++                            <span className="px-2 py-1 rounded-md bg-emerald-100 text-emerald-600 text-[10px] font-bold">{r.priority}</span>
++                          </td>
++                          <td className="py-4 pr-6 text-foreground font-bold break-all">{r.host}</td>
++                          <td className="py-4 pr-6 text-secondary-foreground/40">{r.ttl}s</td>
++                          <td className="py-4"><CheckCircle2 className="h-4 w-4 text-emerald-500" /></td>
++                        </tr>
++                      ))}
++                    </tbody>
++                  </table>
++                </div>
++              )}
++            </motion.div>
++          )}
++        </AnimatePresence>
++
++        <div className="max-w-4xl mt-16 space-y-10 text-secondary-foreground leading-relaxed">
++          <section>
++            <h2 className="text-2xl font-black text-foreground mb-3">What is an MX record?</h2>
++            <p>
++              MX (Mail Exchange) records are the DNS entries that route email. When someone sends a message to
++              your domain, their mail server asks DNS: <em>“which servers accept mail for this domain?”</em> The MX
++              records answer with one or more hostnames and a priority for each. No MX records means no inbound
++              email — one of the first things to check when mail stops working after a DNS or hosting change.
++            </p>
++          </section>
++          <section>
++            <h2 className="text-2xl font-black text-foreground mb-3">How to do an MX lookup</h2>
++            <ol className="list-decimal pl-6 space-y-2">
++              <li>Enter a domain (or a full email address — we extract the domain for you).</li>
++              <li>Click <strong>Lookup</strong>. Results are sorted by priority, exactly as sending servers will try them.</li>
++              <li>Compare the hostnames against your mail provider's documentation (Google Workspace, Microsoft 365, Zoho, or your host).</li>
++              <li>Recently changed something? Confirm the new values are live everywhere with the <Link to="/dns-propagation-checker" className="text-emerald-600 font-semibold hover:underline">DNS Propagation Checker</Link>.</li>
++            </ol>
++          </section>
++          <section>
++            <h2 className="text-2xl font-black text-foreground mb-3">Priorities, backups and deliverability</h2>
++            <p>
++              A second MX record with a higher priority number is your backup: it queues mail when the primary
++              server is down. But MX alone does not make mail trustworthy — pair it with an{" "}
++              <Link to="/spf-checker" className="text-emerald-600 font-semibold hover:underline">SPF record</Link>,
++              DKIM signing and a DMARC policy, or receiving servers may file your messages as spam. Our{" "}
++              <Link to="/email" className="text-emerald-600 font-semibold hover:underline">Email Diagnostics</Link>{" "}
++              tool checks the full set together.
++            </p>
++          </section>
++          <section>
++            <h2 className="text-2xl font-black text-foreground mb-4">Frequently asked questions</h2>
++            <div className="space-y-4">
++              {FAQS.map((f) => (
++                <div key={f.question} className="bg-white border border-slate-200 rounded-2xl p-5">
++                  <h3 className="font-bold text-foreground mb-1">{f.question}</h3>
++                  <p className="text-sm">{f.answer}</p>
++                </div>
++              ))}
++            </div>
++          </section>
++          <section>
++            <h2 className="text-2xl font-black text-foreground mb-3">Related tools</h2>
++            <p className="space-x-4">
++              <Link to="/dns-propagation-checker" className="text-emerald-600 font-semibold hover:underline">DNS Propagation Checker</Link>
++              <Link to="/spf-checker" className="text-emerald-600 font-semibold hover:underline">SPF Checker</Link>
++              <Link to="/email" className="text-emerald-600 font-semibold hover:underline">Email Diagnostics</Link>
++              <Link to="/blacklist" className="text-emerald-600 font-semibold hover:underline">Blacklist Check</Link>
++            </p>
++          </section>
++        </div>
++      </section>
++
++      <SiteFooter />
++    </div>
++  );
++}
+diff --git a/src/routes/sitemap.tsx b/src/routes/sitemap.tsx
+index 54c7b29..3341231 100644
+--- a/src/routes/sitemap.tsx
++++ b/src/routes/sitemap.tsx
+@@ -29,6 +29,9 @@ export const Route = createFileRoute("/sitemap")({
+ const sitemapLinks = [
+   { icon: Globe, title: "IP Checker", desc: "Inspect any IPv4 / IPv6 address: ISP, ASN, location, timezone.", to: "/my-ip" },
+   { icon: Network, title: "DNS Lookup", desc: "Resolve A, AAAA, MX, NS, TXT, CNAME, SOA and CAA records.", to: "/dns" },
++  { icon: Globe, title: "DNS Propagation Checker", desc: "Check if DNS changes have propagated across global resolvers.", to: "/dns-propagation-checker" },
++  { icon: Mail, title: "MX Lookup", desc: "Check mail server (MX) records and priorities for any domain.", to: "/mx-lookup" },
++  { icon: ShieldCheck, title: "SPF Checker", desc: "Validate SPF records and count DNS lookups against the limit of 10.", to: "/spf-checker" },
+   { icon: FileText, title: "Domain WHOIS", desc: "Registrar, age, expiry, status flags, nameservers and DNSSEC.", to: "/whois" },
+   { icon: Server, title: "Hosting Check", desc: "Discover hosting provider, ASN, datacenter location, and server environment.", to: "/hosting" },
+   { icon: ShieldCheck, title: "SSL Checker", desc: "Live TLS reachability plus certificate transparency history.", to: "/ssl" },
+diff --git a/src/routes/sitemap[.]xml.ts b/src/routes/sitemap[.]xml.ts
+index f0074d1..85c3f80 100644
+--- a/src/routes/sitemap[.]xml.ts
++++ b/src/routes/sitemap[.]xml.ts
+@@ -17,6 +17,10 @@ export const Route = createFileRoute("/sitemap.xml")({
+           { path: "/tools", priority: "0.8", changefreq: "weekly" },
+           { path: "/blog", priority: "0.9", changefreq: "daily" },
+           { path: "/dns", priority: "0.8", changefreq: "weekly" },
++          { path: "/dns-propagation-checker", priority: "1.0", changefreq: "daily" },
++          { path: "/mx-lookup", priority: "0.9", changefreq: "weekly" },
++          { path: "/spf-checker", priority: "0.9", changefreq: "weekly" },
++          { path: "/about", priority: "0.5", changefreq: "monthly" },
+           { path: "/whois", priority: "0.8", changefreq: "weekly" },
+           { path: "/ssl", priority: "0.8", changefreq: "weekly" },
+           { path: "/blacklist", priority: "0.8", changefreq: "weekly" },
+diff --git a/src/routes/spf-checker.tsx b/src/routes/spf-checker.tsx
+new file mode 100644
+index 0000000..b3b9da3
+--- /dev/null
++++ b/src/routes/spf-checker.tsx
+@@ -0,0 +1,297 @@
++import { createFileRoute, Link } from "@tanstack/react-router";
++import { Seo } from "@/components/Seo";
++import { useState } from "react";
++import { motion, AnimatePresence } from "framer-motion";
++import { SiteHeader } from "@/components/SiteHeader";
++import { SiteFooter } from "@/components/SiteFooter";
++import { dohQuery } from "@/lib/dns";
++import { ShieldCheck, Loader2, ArrowRight, CheckCircle2, XCircle, AlertTriangle, Terminal } from "lucide-react";
++
++export const Route = createFileRoute("/spf-checker")({
++  head: () => ({
++    meta: [
++      { title: "SPF Checker — Check SPF Record for Any Domain | DNSChecker" },
++      { name: "description", content: "Free SPF checker. Look up and validate the SPF record of any domain — mechanisms, include lookups, and the 10-DNS-lookup limit — to stop email spoofing and spam-folder delivery." },
++      { property: "og:title", content: "SPF Checker — Check SPF Record for Any Domain" },
++      { property: "og:description", content: "Validate SPF records instantly: mechanisms, includes, lookup count and common errors. Free." },
++      { property: "og:url", content: "https://www.dnschecker.space/spf-checker" },
++    ],
++    links: [{ rel: "canonical", href: "https://www.dnschecker.space/spf-checker" }],
++  }),
++  component: SpfPage,
++});
++
++interface SpfAnalysis {
++  record: string;
++  mechanisms: string[];
++  lookupCount: number;
++  allPolicy: string | null;
++  problems: string[];
++}
++
++function analyzeSpf(record: string): SpfAnalysis {
++  const tokens = record.split(/\s+/).filter(Boolean);
++  const mechanisms = tokens.slice(1);
++  const lookupTerms = ["include:", "a", "mx", "ptr", "exists:", "redirect="];
++  let lookupCount = 0;
++  mechanisms.forEach((m) => {
++    const base = m.replace(/^[+\-~?]/, "");
++    if (lookupTerms.some((t) => base === t || base.startsWith(t))) lookupCount++;
++  });
++  const allTerm = mechanisms.find((m) => /[+\-~?]all$/.test(m)) ?? null;
++  const problems: string[] = [];
++  if (lookupCount > 10) problems.push(`Uses about ${lookupCount} DNS lookups — SPF fails permanently (PermError) above 10.`);
++  if (!allTerm) problems.push("No 'all' mechanism found — the record does not state what to do with unauthorised senders.");
++  if (allTerm && allTerm.startsWith("+")) problems.push("'+all' authorises every server on the internet to send as your domain. Use -all or ~all instead.");
++  if (mechanisms.some((m) => m.replace(/^[+\-~?]/, "") === "ptr")) problems.push("Uses the deprecated 'ptr' mechanism, which is slow and unreliable.");
++  return { record, mechanisms, lookupCount, allPolicy: allTerm, problems };
++}
++
++const FAQS = [
++  {
++    question: "What is an SPF record?",
++    answer:
++      "SPF (Sender Policy Framework) is a DNS TXT record that lists which mail servers are allowed to send email for your domain. Receiving servers compare the sending server against this list; mail from unlisted servers can be rejected or sent to spam. SPF is one of the three pillars of email authentication, alongside DKIM and DMARC.",
++  },
++  {
++    question: "What does v=spf1 -all mean?",
++    answer:
++      "v=spf1 declares the SPF version. The mechanisms before 'all' list authorised senders (for example include:_spf.google.com). '-all' is a hard fail: anything not listed is unauthorised. '~all' is a soft fail, treated as suspicious but not conclusive. A well-configured domain should end in -all once every legitimate sender is included.",
++  },
++  {
++    question: "What is the SPF 10-lookup limit?",
++    answer:
++      "An SPF evaluation may trigger at most 10 DNS lookups (from include, a, mx, ptr, exists and redirect terms, including nested ones). Exceeding the limit causes a permanent error (PermError) and SPF fails for every message — a very common cause of 'SPF is set up but mail still fails'. Flattening includes or removing unused services fixes it.",
++  },
++  {
++    question: "Can a domain have two SPF records?",
++    answer:
++      "No. A domain must publish exactly one SPF record. Two v=spf1 TXT records make SPF fail with PermError. When you add a new sending service, merge its include into the existing record instead of adding a second one.",
++  },
++  {
++    question: "How do I create an SPF record?",
++    answer:
++      "List every service that sends mail as your domain: your mail host (for example include:_spf.google.com for Google Workspace or include:spf.protection.outlook.com for Microsoft 365), your website server (ip4:203.0.113.10), and any marketing or helpdesk tools. Combine them in one TXT record ending with -all, then verify it here.",
++  },
++];
++
++function SpfPage() {
++  const [name, setName] = useState("");
++  const [loading, setLoading] = useState(false);
++  const [error, setError] = useState<string | null>(null);
++  const [result, setResult] = useState<{ found: SpfAnalysis[]; multiple: boolean } | null>(null);
++
++  const submit = async (e: React.FormEvent) => {
++    e.preventDefault();
++    let v = name.trim();
++    if (!v) return;
++    try {
++      if (v.startsWith("http")) v = new URL(v).hostname;
++      else if (v.includes("/")) v = v.split("/")[0];
++      if (v.includes("@")) v = v.split("@").pop() ?? v;
++    } catch {
++      v = v.replace(/^https?:\/\//, "").split("/")[0];
++    }
++    setLoading(true);
++    setError(null);
++    setResult(null);
++    try {
++      const data = await dohQuery(v, "TXT");
++      const spfs = data
++        .map((a) => a.data.replace(/"/g, ""))
++        .filter((t) => t.toLowerCase().startsWith("v=spf1"));
++      setResult({ found: spfs.map(analyzeSpf), multiple: spfs.length > 1 });
++    } catch (err) {
++      setError(err instanceof Error ? err.message : "Lookup failed");
++    } finally {
++      setLoading(false);
++    }
++  };
++
++  return (
++    <div className="min-h-screen flex flex-col">
++      <Seo
++        title="SPF Checker — Check SPF Record for Any Domain"
++        description="Free SPF checker. Look up and validate SPF records — mechanisms, include lookups and the 10-lookup limit — for any domain."
++        url="https://www.dnschecker.space/spf-checker"
++        faqs={FAQS}
++      />
++      <SiteHeader />
++
++      <section className="relative pt-16 pb-12 overflow-hidden">
++        <div className="absolute inset-0 grid-bg opacity-20 [mask-image:radial-gradient(ellipse_at_top,black_50%,transparent_90%)]" />
++        <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
++          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl">
++            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 border border-emerald-200 mb-6">
++              <ShieldCheck className="h-3 w-3 text-emerald-600" />
++              <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-600">Email Authentication</span>
++            </div>
++            <h1 className="text-4xl sm:text-6xl font-black text-foreground mb-6 tracking-tight">
++              SPF <span className="text-gradient">Checker</span>
++            </h1>
++            <p className="text-lg text-secondary-foreground max-w-2xl leading-relaxed mb-12">
++              Check the SPF record of any domain and validate it on the spot — mechanisms, authorised senders,
++              lookup count against the 10-lookup limit, and the mistakes that quietly break email delivery.
++            </p>
++
++            <form onSubmit={submit} className="relative max-w-3xl group">
++              <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-400 rounded-[24px] blur opacity-25 group-hover:opacity-40 transition duration-1000" />
++              <div className="relative flex items-center bg-white border border-slate-200 shadow-sm rounded-[20px] p-2 overflow-hidden">
++                <div className="flex flex-1 items-center pl-4 w-full">
++                  <ShieldCheck className="h-5 w-5 text-secondary-foreground/40 mr-4" />
++                  <input
++                    value={name}
++                    onChange={(e) => setName(e.target.value)}
++                    placeholder="e.g. google.com"
++                    className="flex-1 bg-transparent border-none outline-none text-foreground placeholder:text-secondary-foreground/30 font-mono text-base py-3"
++                  />
++                </div>
++                <button
++                  type="submit"
++                  disabled={loading}
++                  className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:scale-105 active:scale-95 text-white px-8 py-3.5 rounded-[16px] font-black text-sm transition-all shadow-md flex items-center justify-center gap-2 disabled:opacity-50"
++                >
++                  {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Check SPF"}
++                  {!loading && <ArrowRight className="h-4 w-4" />}
++                </button>
++              </div>
++            </form>
++          </motion.div>
++        </div>
++      </section>
++
++      <section className="mx-auto w-full max-w-7xl px-4 sm:px-6 py-12 flex-1">
++        <AnimatePresence mode="wait">
++          {error && (
++            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="glass rounded-2xl p-6 border-danger/20 bg-danger/5 text-danger font-mono text-sm flex items-center gap-3">
++              <Terminal className="h-5 w-5" />
++              {error}
++            </motion.div>
++          )}
++          {result && (
++            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
++              {result.found.length === 0 && (
++                <div className="bg-white shadow-lg rounded-[32px] p-10 border border-slate-200 flex items-start gap-3">
++                  <XCircle className="h-6 w-6 text-red-500 mt-0.5" />
++                  <div>
++                    <h2 className="font-black text-foreground mb-1">No SPF record found</h2>
++                    <p className="text-sm text-secondary-foreground leading-relaxed">
++                      This domain publishes no SPF record, so anyone can send mail pretending to be it and
++                      receiving servers have no way to verify legitimate senders. Add a TXT record starting with{" "}
++                      <span className="font-mono">v=spf1</span> listing your mail services, ending with{" "}
++                      <span className="font-mono">-all</span>.
++                    </p>
++                  </div>
++                </div>
++              )}
++              {result.multiple && (
++                <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 flex items-start gap-3">
++                  <AlertTriangle className="h-5 w-5 text-amber-600 mt-0.5" />
++                  <p className="text-sm text-amber-800">
++                    <strong>Multiple SPF records found.</strong> A domain may publish only one — with two or more,
++                    SPF fails (PermError) for every message. Merge them into a single record.
++                  </p>
++                </div>
++              )}
++              {result.found.map((a, i) => (
++                <div key={i} className="bg-white shadow-lg rounded-[32px] p-10 border border-slate-200">
++                  <div className="flex items-center gap-2 mb-6">
++                    {a.problems.length === 0 ? (
++                      <CheckCircle2 className="h-5 w-5 text-emerald-500" />
++                    ) : (
++                      <AlertTriangle className="h-5 w-5 text-amber-500" />
++                    )}
++                    <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-foreground">
++                      {a.problems.length === 0 ? "SPF record looks healthy" : "SPF record found — with warnings"}
++                    </h2>
++                  </div>
++                  <p className="font-mono text-sm bg-slate-50 border border-slate-200 rounded-xl p-4 break-all mb-6">{a.record}</p>
++                  <div className="grid sm:grid-cols-3 gap-4 mb-6 text-sm">
++                    <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
++                      <span className="block text-[10px] font-bold uppercase tracking-widest text-secondary-foreground/50 mb-1">Mechanisms</span>
++                      <span className="font-bold text-foreground">{a.mechanisms.length}</span>
++                    </div>
++                    <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
++                      <span className="block text-[10px] font-bold uppercase tracking-widest text-secondary-foreground/50 mb-1">DNS Lookups (est.)</span>
++                      <span className="font-bold text-foreground">{a.lookupCount} / 10</span>
++                    </div>
++                    <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
++                      <span className="block text-[10px] font-bold uppercase tracking-widest text-secondary-foreground/50 mb-1">Default Policy</span>
++                      <span className="font-bold text-foreground">{a.allPolicy ?? "none"}</span>
++                    </div>
++                  </div>
++                  {a.problems.length > 0 && (
++                    <ul className="space-y-2">
++                      {a.problems.map((p) => (
++                        <li key={p} className="flex items-start gap-2 text-sm text-amber-700">
++                          <AlertTriangle className="h-4 w-4 mt-0.5 shrink-0" />
++                          {p}
++                        </li>
++                      ))}
++                    </ul>
++                  )}
++                </div>
++              ))}
++            </motion.div>
++          )}
++        </AnimatePresence>
++
++        <div className="max-w-4xl mt-16 space-y-10 text-secondary-foreground leading-relaxed">
++          <section>
++            <h2 className="text-2xl font-black text-foreground mb-3">What is an SPF record?</h2>
++            <p>
++              SPF (Sender Policy Framework) is a DNS TXT record that declares which servers may send email for
++              your domain. When a message arrives, the receiving server reads your SPF record and checks the
++              sender against it. Together with DKIM and DMARC, SPF stops spammers from forging your domain and
++              keeps your legitimate mail out of the spam folder. Use the checker above to see your record exactly
++              as receiving servers do.
++            </p>
++          </section>
++          <section>
++            <h2 className="text-2xl font-black text-foreground mb-3">How to check an SPF record</h2>
++            <ol className="list-decimal pl-6 space-y-2">
++              <li>Enter the domain that sends your email (the part after the @).</li>
++              <li>Click <strong>Check SPF</strong>. We fetch the domain's TXT records and isolate the one starting with <span className="font-mono">v=spf1</span>.</li>
++              <li>Review the verdict: every sending service you use should appear as an <span className="font-mono">include:</span>, <span className="font-mono">ip4:</span> or <span className="font-mono">ip6:</span> mechanism, the lookup estimate must stay at or below 10, and the record should end with <span className="font-mono">-all</span>.</li>
++              <li>Fix any warnings, wait for DNS to propagate, and check again.</li>
++            </ol>
++          </section>
++          <section>
++            <h2 className="text-2xl font-black text-foreground mb-3">SPF, DKIM and DMARC work together</h2>
++            <p>
++              SPF verifies the sending server, DKIM signs the message content, and DMARC tells receivers what to
++              do when the first two fail — and gives you reports. Passing SPF alone is a start; a DMARC policy of{" "}
++              <span className="font-mono">p=reject</span> with aligned SPF and DKIM is the end state that makes
++              spoofing your domain impractical. Check where your mail actually enters with the{" "}
++              <Link to="/mx-lookup" className="text-emerald-600 font-semibold hover:underline">MX Lookup</Link> and
++              the full stack with{" "}
++              <Link to="/email" className="text-emerald-600 font-semibold hover:underline">Email Diagnostics</Link>.
++            </p>
++          </section>
++          <section>
++            <h2 className="text-2xl font-black text-foreground mb-4">Frequently asked questions</h2>
++            <div className="space-y-4">
++              {FAQS.map((f) => (
++                <div key={f.question} className="bg-white border border-slate-200 rounded-2xl p-5">
++                  <h3 className="font-bold text-foreground mb-1">{f.question}</h3>
++                  <p className="text-sm">{f.answer}</p>
++                </div>
++              ))}
++            </div>
++          </section>
++          <section>
++            <h2 className="text-2xl font-black text-foreground mb-3">Related tools</h2>
++            <p className="space-x-4">
++              <Link to="/mx-lookup" className="text-emerald-600 font-semibold hover:underline">MX Lookup</Link>
++              <Link to="/email" className="text-emerald-600 font-semibold hover:underline">Email Diagnostics</Link>
++              <Link to="/dns-propagation-checker" className="text-emerald-600 font-semibold hover:underline">DNS Propagation Checker</Link>
++              <Link to="/blacklist" className="text-emerald-600 font-semibold hover:underline">Blacklist Check</Link>
++            </p>
++          </section>
++        </div>
++      </section>
++
++      <SiteFooter />
++    </div>
++  );
++}
+diff --git a/src/routes/tools.tsx b/src/routes/tools.tsx
+index 3e1683d..917f92a 100644
+--- a/src/routes/tools.tsx
++++ b/src/routes/tools.tsx
+@@ -22,6 +22,9 @@ export const Route = createFileRoute("/tools")({
+ const tools = [
+   { icon: Globe, title: "IP Checker", desc: "Inspect any IPv4 / IPv6 address: ISP, ASN, location, timezone.", href: "/my-ip" },
+   { icon: Network, title: "DNS Lookup", desc: "Resolve A, AAAA, MX, NS, TXT, CNAME, SOA and CAA records.", href: "/dns" },
++  { icon: Globe, title: "DNS Propagation Checker", desc: "Check if DNS changes have propagated across global resolvers.", href: "/dns-propagation-checker" },
++  { icon: Mail, title: "MX Lookup", desc: "Check mail server (MX) records and priorities for any domain.", href: "/mx-lookup" },
++  { icon: ShieldCheck, title: "SPF Checker", desc: "Validate SPF records and count DNS lookups against the limit of 10.", href: "/spf-checker" },
+   { icon: FileText, title: "Domain WHOIS", desc: "Registrar, age, expiry, status flags, nameservers and DNSSEC.", href: "/whois" },
+   { icon: Server, title: "Hosting Check", desc: "Discover hosting provider, ASN, datacenter location, and server environment.", href: "/hosting" },
+   { icon: ShieldCheck, title: "SSL Checker", desc: "Live TLS reachability plus certificate transparency history.", href: "/ssl" },
+diff --git a/src/routes/whois.tsx b/src/routes/whois.tsx
+index 64f98c4..fb62af2 100644
+--- a/src/routes/whois.tsx
++++ b/src/routes/whois.tsx
+@@ -102,7 +102,7 @@ function WhoisPage() {
+               <span className="text-[11px] font-bold tracking-[0.2em] text-emerald-600 uppercase">Registry Protocol v4.2</span>
+             </div>
+             <h1 className="text-4xl sm:text-6xl font-black text-foreground mb-6 tracking-tight">
+-              Registry <span className="text-gradient">Intelligence</span>
++              WHOIS <span className="text-gradient">Lookup</span>
+             </h1>
+             <p className="text-lg text-secondary-foreground max-w-2xl mx-auto leading-relaxed mb-12">
+               RDAP-powered WHOIS lookup for any domain or IP address. Retrieve registrar data, important dates, nameservers, and ownership contacts.
